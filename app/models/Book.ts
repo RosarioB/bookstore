@@ -1,12 +1,14 @@
 import mongoose from 'mongoose';
 
 export interface IBook {
+    _id: string
     category: string
     title: string
     author: string
     rating: number
     price: number
     imageSrc: string
+    stock: number
 }
 
 const bookSchema = new mongoose.Schema<IBook>({
@@ -39,6 +41,11 @@ const bookSchema = new mongoose.Schema<IBook>({
     imageSrc: {
         type: String,
         required: [true, "Please provide an image URL for this book"],
+    },
+    stock: {
+        type: Number,
+        required: [true, "Please provide a stock for this book"],
+        min: [0, "Stock must be at least 0"],
     },
 }, {
     timestamps: true,
