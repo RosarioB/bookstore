@@ -1,10 +1,16 @@
-import NextLink from "next/link";
+import Link from "next/link";
 import { AlignJustifyIcon, ShoppingCartIcon, BookOpenIcon } from "lucide-react";
-
-import BookTypeMenu from "@/components/Layout/BookTypeMenu";
-import { calcCartItemSum } from "@/lib/utils";
 import { useAtom } from "jotai";
 import { shoppingCartState } from "@/atoms";
+import { calcCartItemSum } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import BookTypeMenu from "@/components/Layout/BookTypeMenu";
 
 export interface HeaderProps {
   hideMenu?: boolean;
@@ -15,38 +21,56 @@ export default function Header(props: HeaderProps) {
   const [shoppingCart] = useAtom(shoppingCartState);
 
   return (
-    <>
-      <div className="navbar bg-base-100 mx-auto max-w-7xl mt-4 shadow-xl rounded-box">
-        <div className="navbar-start">
-          {!hideMenu && (
-            <div className="dropdown">
-              <label
-                tabIndex={0}
-                className="btn btn-ghost btn-circle content-center"
+    <header className="mx-auto max-w-7xl mt-4">
+      <nav className="bg-card rounded-xl shadow-xl px-4 py-3">
+        <div className="flex items-center justify-between">
+          {/* Left side - Menu */}
+          <div className="flex items-center">
+            {!hideMenu && (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="icon" className="cursor-pointer">
+                    <AlignJustifyIcon className="size-6" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start">
+                  <BookTypeMenu />
+                </DropdownMenuContent>
+              </DropdownMenu>
+            )}
+          </div>
+
+          {/* Center - Logo */}
+          <div className="flex items-center">
+            <Button variant="ghost" size="lg">
+              <Link
+                href="/"
+                className="flex items-center gap-2 text-xl font-semibold"
               >
-                <AlignJustifyIcon className="w-6 h-6" />
-              </label>
-              <BookTypeMenu />
-            </div>
-          )}
+                <BookOpenIcon className="size-6" />
+                Bookstore
+              </Link>
+            </Button>
+          </div>
+
+          {/* Right side - Cart */}
+          <div className="flex items-center">
+            <Button variant="ghost" size="icon" asChild>
+              <Link href="/cart">
+                <div className="relative">
+                  <ShoppingCartIcon className="size-6" />
+                  <Badge
+                    variant="destructive"
+                    className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs"
+                  >
+                    {calcCartItemSum(shoppingCart)}
+                  </Badge>
+                </div>
+              </Link>
+            </Button>
+          </div>
         </div>
-        <div className="navbar-center">
-          <NextLink href="/" className="btn btn-ghost normal-case text-xl">
-            <BookOpenIcon className="w-6 h-6" />
-            Bookstore
-          </NextLink>
-        </div>
-        <div className="navbar-end">
-          <NextLink href="/cart" className="btn btn-ghost btn-circle">
-            <div className="indicator">
-              <ShoppingCartIcon className="w-6 h-6" />
-              <span className="badge badge-sm indicator-item">
-                {calcCartItemSum(shoppingCart)}
-              </span>
-            </div>
-          </NextLink>
-        </div>
-      </div>
-    </>
+      </nav>
+    </header>
   );
 }

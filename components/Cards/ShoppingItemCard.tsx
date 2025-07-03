@@ -8,11 +8,13 @@ import { shoppingCartState } from "@/atoms";
 import { BookProps } from "@/const";
 import { currencyFormat } from "@/lib/utils";
 import StarRating from "../Rating/StarRating";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 export default function ShoopingItemCard(props: BookProps) {
   const { _id, category, title, author, rating, price, imageSrc, stock } =
     props;
-  const [, setShoppingCart] = useAtom(shoppingCartState);
+  const [shoppingCart, setShoppingCart] = useAtom(shoppingCartState);
 
   const { enqueueSnackbar } = useSnackbar();
 
@@ -47,25 +49,31 @@ export default function ShoopingItemCard(props: BookProps) {
   };
 
   return (
-    <div className="card card-compact w-96 bg-base-100 shadow-xl">
-      <figure>
-        <Image src={imageSrc} alt={title} width={384} height={140} />
-      </figure>
-      <div className="card-body">
-        <div className="text-sm text-slate-500"> {category}</div>
-        <h2 className="card-title">{title}</h2>
-        <p className="font-medium text-slate-500">{author}</p>
-        <StarRating rating={rating} disabled />
-        <div className="card-actions justify-end">
-          <button className="btn" onClick={addItem}>
-            ${currencyFormat(price)}
-            <ShoppingCartIcon className="h-6 w-6" />
-          </button>
-          <Link href={`/book/${_id}`} className="btn btn-info">
-            View Details
-          </Link>
-        </div>
+    <Card className="w-full max-w-sm">
+      <div className="relative">
+        <Image
+          src={imageSrc}
+          alt={title}
+          width={384}
+          height={240}
+          className="w-full h-60 object-cover rounded-t-xl"
+        />
       </div>
-    </div>
+      <CardContent className="space-y-3">
+        <div className="text-sm text-muted-foreground">{category}</div>
+        <h3 className="font-semibold text-lg leading-tight">{title}</h3>
+        <p className="text-muted-foreground">{author}</p>
+        <StarRating rating={rating} disabled />
+      </CardContent>
+      <CardFooter className="flex gap-2">
+        <Button onClick={addItem} className="flex-1">
+          ${currencyFormat(price)}
+          <ShoppingCartIcon className="h-4 w-4" />
+        </Button>
+        <Button variant="outline" asChild>
+          <Link href={`/book/${_id}`}>View Details</Link>
+        </Button>
+      </CardFooter>
+    </Card>
   );
 }

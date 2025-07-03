@@ -14,6 +14,7 @@ export default function BookList(props: BookListProps) {
   const { page, pageSize } = props;
   const [bookListLoadable] = useAtom(loadable(homePageQuery));
   const [homePageBookSum, setHomePageBookSum] = useAtom(homePageBookSumState);
+  console.log("bookListLoadable", bookListLoadable);
   switch (bookListLoadable.state) {
     case "hasData":
       setHomePageBookSum(bookListLoadable.data.total);
@@ -37,8 +38,8 @@ export default function BookList(props: BookListProps) {
       );
     case "loading":
       return (
-        <div className="flex items-center justify-center">
-          <span className="loading loading-bars loading-lg"></span>
+        <div className="flex items-center justify-center py-8">
+          <div className="animate-spin h-8 w-8 border-4 border-primary border-t-transparent rounded-full"></div>
         </div>
       );
     case "hasError":
