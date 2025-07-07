@@ -12,8 +12,10 @@ export interface BookListProps {
 
 export default function BookList(props: BookListProps) {
   const { page, pageSize } = props;
+  
   const [bookListLoadable] = useAtom(loadable(homePageQuery));
   const [homePageBookSum, setHomePageBookSum] = useAtom(homePageBookSumState);
+  
   console.log("bookListLoadable", bookListLoadable);
   switch (bookListLoadable.state) {
     case "hasData":

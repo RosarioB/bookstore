@@ -6,12 +6,7 @@ import Pagination from "@/components/Pagination";
 import { useAtom } from "jotai";
 import { homePageBookSumState, homePageQueryState } from "@/atoms";
 import { PAGE_SIZE } from "@/const";
-import dynamic from "next/dynamic";
-
-const BookList = dynamic(
-  import("@/components/Cards/ShoppingItemCardList"),
-  { ssr: false }
-);
+import BookList from "@/components/Cards/ShoppingItemCardList";
 
 export default function Home() {
   const [homePageQueryData, setHomePageQueryData] = useAtom(homePageQueryState);

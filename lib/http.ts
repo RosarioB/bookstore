@@ -1,6 +1,10 @@
 import axios from 'axios';
 import { BookProps } from '@/const';
 
+const api = axios.create({
+    baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'
+});
+
 export async function fetchBooks(data: {
     page?: number;
     size?: number;
@@ -15,11 +19,11 @@ export async function fetchBooks(data: {
             }
             return prev;
         }, []);
-        const response = await axios.get(`/api/books?${queryArray.join(`&`)}`);
+        const response = await api.get(`/api/books?${queryArray.join(`&`)}`);
         if (response.status !== 200) {
             throw new Error(`${response.status} - ${response.data}`);
         }
-        return response.data;
+        return response.data.data;
     } catch (error) {
         console.error(error);
         return { error, content: [], total: 0 };

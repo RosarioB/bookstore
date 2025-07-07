@@ -8,13 +8,13 @@ import { shoppingCartState } from "@/atoms";
 import { BookProps } from "@/const";
 import { currencyFormat } from "@/lib/utils";
 import StarRating from "../Rating/StarRating";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 export default function ShoopingItemCard(props: BookProps) {
   const { _id, category, title, author, rating, price, imageSrc, stock } =
     props;
-  const [shoppingCart, setShoppingCart] = useAtom(shoppingCartState);
+  const [, setShoppingCart] = useAtom(shoppingCartState);
 
   const { enqueueSnackbar } = useSnackbar();
 
@@ -49,29 +49,29 @@ export default function ShoopingItemCard(props: BookProps) {
   };
 
   return (
-    <Card className="w-full max-w-sm">
-      <div className="relative">
+    <Card className="w-full max-w-sm p-0 gap-2 shadow-xl border-0">
+      <CardHeader className="p-0">
         <Image
           src={imageSrc}
           alt={title}
           width={384}
-          height={240}
-          className="w-full h-60 object-cover rounded-t-xl"
+          height={140}
+          className="w-full h-35 object-cover rounded-t-xl"
         />
-      </div>
-      <CardContent className="space-y-3">
+      </CardHeader>
+      <CardContent className="space-y-2 px-4">
         <div className="text-sm text-muted-foreground">{category}</div>
-        <h3 className="font-semibold text-lg leading-tight">{title}</h3>
-        <p className="text-muted-foreground">{author}</p>
-        <StarRating rating={rating} disabled />
+        <h3 className="font-semibold text-xl">{title}</h3>
+        <p className="text-sm text-muted-foreground">{author}</p>
+        <StarRating rating={rating} disabled className="mt-8"/>
       </CardContent>
-      <CardFooter className="flex gap-2">
-        <Button onClick={addItem} className="flex-1">
+      <CardFooter className="flex gap-2 justify-end px-4 pb-4">
+        <Button onClick={addItem} className="h-12 w-26 font-semibold">
           ${currencyFormat(price)}
-          <ShoppingCartIcon className="h-4 w-4" />
+          <ShoppingCartIcon className="size-6" />
         </Button>
-        <Button variant="outline" asChild>
-          <Link href={`/book/${_id}`}>View Details</Link>
+        <Button variant="secondary" asChild className="h-12 w-28 font-semibold">
+          <Link href={`/book/${_id}`}>VIEW DETAILS</Link>
         </Button>
       </CardFooter>
     </Card>

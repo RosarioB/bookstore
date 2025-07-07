@@ -16,7 +16,7 @@ export const bookDetailsIdState = atom("");
 export const currentUserIdState = atom("1");
 
 export const homePageQuery = atom(async (get) => {
-  const { page, size, type, sort } = get(homePageQueryState)
+  const { page, size, type, sort } = get(homePageQueryState);
   const response = await fetchBooks({ page, size, type, sort })
-  return response
-})
+  return response;
+});
