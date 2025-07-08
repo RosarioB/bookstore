@@ -1,8 +1,9 @@
 import { useAtom } from "jotai";
 
 import ShoopingItemCard from "./shopping-item-card";
-import { homePageBookSumState, homePageQuery } from "@/atoms";
-import { loadable } from "jotai/utils";
+import {
+  homePageBookSumState, homePageQueryLoadable
+} from "@/atoms";
 import { BookProps } from "@/const";
 import SkeletonLayout from "../Skeleton/skeleton-layout";
 
@@ -13,14 +14,13 @@ export interface BookListProps {
 
 export default function BookList(props: BookListProps) {
   const { page, pageSize } = props;
-  
-  const [bookListLoadable] = useAtom(loadable(homePageQuery));
-  const [homePageBookSum, setHomePageBookSum] = useAtom(homePageBookSumState);
-  
+
+  const [bookListLoadable] = useAtom(homePageQueryLoadable);
+  const [homePageBookSum] = useAtom(homePageBookSumState);
+
   console.log("bookListLoadable", bookListLoadable);
   switch (bookListLoadable.state) {
     case "hasData":
-      setHomePageBookSum(bookListLoadable.data.total);
       return (
         <>
           {!!homePageBookSum && (

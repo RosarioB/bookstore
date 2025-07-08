@@ -25,6 +25,8 @@ const getPositionStyles = (index: number, totalPages: number) => {
 export default function Pagination(props: PaginationProps) {
   const { currentPage, pages, onClick } = props;
 
+  console.log("Pagination pages", pages);
+
   return (
     <div className="flex items-center gap-0">
       {new Array(pages).fill(0).map((_, idx) => {

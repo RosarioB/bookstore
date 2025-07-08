@@ -16,6 +16,9 @@ export default function Home() {
     setHomePageQueryData({ ...homePageQueryData, page });
   };
 
+  console.log("homePageBookSum", homePageBookSum);
+  console.log("PAGE_SIZE", PAGE_SIZE);
+
   return (
     <>
       <CommonLayout>
@@ -23,7 +26,7 @@ export default function Home() {
         <div className="flex justify-center pt-6">
           <Pagination
             currentPage={homePageQueryData?.page || 1}
-            pages={Math.round(homePageBookSum / PAGE_SIZE)}
+            pages={Math.ceil(homePageBookSum / PAGE_SIZE)}
             onClick={handleClickPagination}
           />
         </div>

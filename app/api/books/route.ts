@@ -3,13 +3,11 @@ import Book from '@/app/models/Book';
 import dbConnect from '@/lib/mongoose';
 import { BOOK_TYPES } from '@/const';
 
-// Constants for validation
 const DEFAULT_PAGE_NUM = 1;
-const DEFAULT_PAGE_SIZE = 8;
+const DEFAULT_PAGE_SIZE = 6;
 const SORT_TYPES = ['price', 'rating'];
 const SORT_ORDERS = ['asc', 'desc'];
 
-// Type definitions
 interface BookFilter {
   category?: string;
 }
@@ -19,6 +17,7 @@ interface BookQueryOptions {
     createdAt?: 1 | -1;
     price?: 1 | -1;
     rating?: 1 | -1;
+    _id?: 1 | -1;
   };
   limit: number;
   skip: number;
@@ -28,7 +27,7 @@ interface BookQueryOptions {
 function parseBookListQuery(searchParams: URLSearchParams): { filter: BookFilter; options: BookQueryOptions } {
   const filter: BookFilter = {};
   const options: BookQueryOptions = {
-    sort: { createdAt: -1 }, // default sort
+    sort: { createdAt: -1, _id: -1 }, // default sort with _id as tiebreaker
     limit: DEFAULT_PAGE_SIZE,
     skip: 0
   };
@@ -54,11 +53,9 @@ function parseBookListQuery(searchParams: URLSearchParams): { filter: BookFilter
     const sortOrder = order === 'asc' ? 1 : -1;
     
     if (sort === 'price') {
-      options.sort = { price: sortOrder };
-    } else if (sort === 'createdAt') {
-      options.sort = { createdAt: sortOrder };
+      options.sort = { price: sortOrder, _id: -1 };
     } else if (sort === 'rating') {
-      options.sort = { rating: sortOrder };
+      options.sort = { rating: sortOrder, _id: -1 };
     }
   }
 

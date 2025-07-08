@@ -83,7 +83,7 @@ const books = [
     author: "Anthony Bourdain",
     rating: 3.8,
     price: 18.99,
-    imageSrc: "https://images.unsplash.com/photo-1556909114-8ba446fdc2c5?w=400",
+    imageSrc: "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=400",
     stock: 28,
   },
   {
@@ -180,7 +180,7 @@ const books = [
     rating: 3.2,
     price: 16.75,
     imageSrc:
-      "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400",
+      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400",
     stock: 22,
   },
   {
@@ -219,7 +219,7 @@ const books = [
     rating: 4.2,
     price: 17.75,
     imageSrc:
-      "https://images.unsplash.com/photo-1464822759844-d150baec0494?w=400",
+      "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400",
     stock: 20,
   },
   {
@@ -277,7 +277,7 @@ const books = [
     author: "Julia Child",
     rating: 4.1,
     price: 18.5,
-    imageSrc: "https://images.unsplash.com/photo-1556909045-f3c0bb57b52b?w=400",
+    imageSrc: "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=400",
     stock: 25,
   },
   {
@@ -307,7 +307,7 @@ const books = [
     rating: 3,
     price: 19.99,
     imageSrc:
-      "https://images.unsplash.com/photo-1491841573337-28ac23db38d7?w=400",
+      "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400",
     stock: 18,
   },
   {
@@ -423,7 +423,7 @@ const books = [
     author: "Alice Waters",
     rating: 4,
     price: 22.5,
-    imageSrc: "https://images.unsplash.com/photo-1556909114-8ba446fdc2c5?w=400",
+    imageSrc: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400",
     stock: 16,
   },
   {
@@ -520,7 +520,7 @@ const books = [
     rating: 4,
     price: 18.75,
     imageSrc:
-      "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400",
+      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400",
     stock: 21,
   },
   {
@@ -607,7 +607,7 @@ const books = [
     rating: 3.3,
     price: 20.5,
     imageSrc:
-      "https://images.unsplash.com/photo-1464822759844-d150baec0494?w=400",
+      "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400",
     stock: 11,
   },
   {
@@ -616,7 +616,7 @@ const books = [
     author: "Michael Pollan",
     rating: 4,
     price: 20.5,
-    imageSrc: "https://images.unsplash.com/photo-1556909045-f3c0bb57b52b?w=400",
+    imageSrc: "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=400",
     stock: 17,
   },
   {
@@ -763,7 +763,7 @@ const books = [
     author: "Karen Page",
     rating: 4.4,
     price: 25.99,
-    imageSrc: "https://images.unsplash.com/photo-1556909114-8ba446fdc2c5?w=400",
+    imageSrc: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400",
     stock: 14,
   },
   {
@@ -793,7 +793,7 @@ const books = [
     rating: 3,
     price: 13.5,
     imageSrc:
-      "https://images.unsplash.com/photo-1491841573337-28ac23db38d7?w=400",
+      "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400",
     stock: 30,
   },
   {
@@ -859,7 +859,7 @@ const books = [
     rating: 4.1,
     price: 23.75,
     imageSrc:
-      "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400",
+      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400",
     stock: 18,
   },
   {
@@ -956,7 +956,7 @@ const books = [
     author: "The Culinary Institute of America",
     rating: 4.0,
     price: 45.0,
-    imageSrc: "https://images.unsplash.com/photo-1556909045-f3c0bb57b52b?w=400",
+    imageSrc: "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=400",
     stock: 8,
   },
   {
