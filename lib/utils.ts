@@ -20,10 +20,6 @@ export function currencyFormat(num: number | string) {
     .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 }
 
-export const BOOK_TYPES = [
-  "fiction",
-  "travel",
-  "food",
-  "health",
-  "business",
-]
+export function upperCaseEachWord(str: string) {
+  return str.replace(/\w\S*/g, (w) => w.replace(/^\w/, (c) => c.toUpperCase()));
+}

@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import Header, { HeaderProps } from "@/components/Layout/Header";
+import Header, { HeaderProps } from "@/components/Layout/header";
 
 export interface CommonLayoutProps {
   children?: ReactNode;

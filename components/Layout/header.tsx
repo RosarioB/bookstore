@@ -10,7 +10,7 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import BookTypeMenu from "@/components/Layout/BookTypeMenu";
+import BookTypeMenu from "@/components/Layout/book-type-menu";
 
 export interface HeaderProps {
   hideMenu?: boolean;

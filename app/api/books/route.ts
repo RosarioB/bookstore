@@ -1,12 +1,12 @@
 import { NextResponse } from 'next/server';
 import Book from '@/app/models/Book';
 import dbConnect from '@/lib/mongoose';
-import { BOOK_TYPES } from '@/lib/utils';
+import { BOOK_TYPES } from '@/const';
 
 // Constants for validation
 const DEFAULT_PAGE_NUM = 1;
 const DEFAULT_PAGE_SIZE = 8;
-const SORT_TYPES = ['price', 'createdAt', 'rating'];
+const SORT_TYPES = ['price', 'rating'];
 const SORT_ORDERS = ['asc', 'desc'];
 
 // Type definitions

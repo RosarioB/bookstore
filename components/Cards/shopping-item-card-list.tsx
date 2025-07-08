@@ -1,9 +1,10 @@
 import { useAtom } from "jotai";
 
-import ShoopingItemCard from "./ShoppingItemCard";
+import ShoopingItemCard from "./shopping-item-card";
 import { homePageBookSumState, homePageQuery } from "@/atoms";
 import { loadable } from "jotai/utils";
 import { BookProps } from "@/const";
+import SkeletonLayout from "../Skeleton/skeleton-layout";
 
 export interface BookListProps {
   page: number;
@@ -39,11 +40,7 @@ export default function BookList(props: BookListProps) {
         </>
       );
     case "loading":
-      return (
-        <div className="flex items-center justify-center py-8">
-          <div className="animate-spin h-8 w-8 border-4 border-primary border-t-transparent rounded-full"></div>
-        </div>
-      );
+      return <SkeletonLayout />;
     case "hasError":
       throw bookListLoadable.error;
   }

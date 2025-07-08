@@ -6,7 +6,7 @@ import Pagination from "@/components/Pagination";
 import { useAtom } from "jotai";
 import { homePageBookSumState, homePageQueryState } from "@/atoms";
 import { PAGE_SIZE } from "@/const";
-import BookList from "@/components/Cards/ShoppingItemCardList";
+import BookList from "@/components/Cards/shopping-item-card-list";
 
 export default function Home() {
   const [homePageQueryData, setHomePageQueryData] = useAtom(homePageQueryState);
@@ -19,9 +19,7 @@ export default function Home() {
   return (
     <>
       <CommonLayout>
-        <Suspense fallback={<div>Loading...</div>}>
           <BookList page={homePageQueryData?.page || 1} pageSize={PAGE_SIZE} />
-        </Suspense>
         <div className="flex justify-center pt-6">
           <Pagination
             currentPage={homePageQueryData?.page || 1}

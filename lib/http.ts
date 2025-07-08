@@ -8,7 +8,7 @@ const api = axios.create({
 export async function fetchBooks(data: {
     page?: number;
     size?: number;
-    type?: string;
+    category?: string;
     sort?: string;
 }): Promise<{ content: BookProps[]; total: number; error?: unknown }> {
     try {

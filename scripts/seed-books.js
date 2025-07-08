@@ -9,7 +9,7 @@ const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017";
 const books = [
   // Mixed categories with varied ratings (1-5 stars)
   {
-    category: "Fiction",
+    category: "fiction",
     title: "The Midnight Library",
     author: "Matt Haig",
     rating: 2,
@@ -19,7 +19,7 @@ const books = [
     stock: 25,
   },
   {
-    category: "Travel",
+    category: "travel",
     title: "A Walk in the Woods",
     author: "Bill Bryson",
     rating: 3.8,
@@ -29,7 +29,7 @@ const books = [
     stock: 18,
   },
   {
-    category: "Food",
+    category: "food",
     title: "Salt, Fat, Acid, Heat",
     author: "Samin Nosrat",
     rating: 5,
@@ -39,7 +39,7 @@ const books = [
     stock: 35,
   },
   {
-    category: "Health",
+    category: "health",
     title: "Atomic Habits",
     author: "James Clear",
     rating: 2.8,
@@ -49,7 +49,7 @@ const books = [
     stock: 45,
   },
   {
-    category: "Business",
+    category: "business",
     title: "The Lean Startup",
     author: "Eric Ries",
     rating: 4,
@@ -59,7 +59,7 @@ const books = [
     stock: 28,
   },
   {
-    category: "Fiction",
+    category: "fiction",
     title: "Where the Crawdads Sing",
     author: "Delia Owens",
     rating: 4.5,
@@ -68,7 +68,7 @@ const books = [
     stock: 30,
   },
   {
-    category: "Travel",
+    category: "travel",
     title: "Into the Wild",
     author: "Jon Krakauer",
     rating: 4,
@@ -78,7 +78,7 @@ const books = [
     stock: 22,
   },
   {
-    category: "Food",
+    category: "food",
     title: "Kitchen Confidential",
     author: "Anthony Bourdain",
     rating: 3.8,
@@ -87,7 +87,7 @@ const books = [
     stock: 28,
   },
   {
-    category: "Health",
+    category: "health",
     title: "The Blue Zones",
     author: "Dan Buettner",
     rating: 4,
@@ -96,7 +96,7 @@ const books = [
     stock: 32,
   },
   {
-    category: "Business",
+    category: "business",
     title: "Good to Great",
     author: "Jim Collins",
     rating: 1.5,
@@ -105,7 +105,7 @@ const books = [
     stock: 32,
   },
   {
-    category: "Fiction",
+    category: "fiction",
     title: "The Seven Husbands of Evelyn Hugo",
     author: "Taylor Jenkins Reid",
     rating: 5,
@@ -115,7 +115,7 @@ const books = [
     stock: 20,
   },
   {
-    category: "Travel",
+    category: "travel",
     title: "Eat, Pray, Love",
     author: "Elizabeth Gilbert",
     rating: 2.8,
@@ -125,7 +125,7 @@ const books = [
     stock: 25,
   },
   {
-    category: "Food",
+    category: "food",
     title: "The Food Lab",
     author: "J. Kenji López-Alt",
     rating: 5,
@@ -134,7 +134,7 @@ const books = [
     stock: 15,
   },
   {
-    category: "Health",
+    category: "health",
     title: "How Not to Die",
     author: "Michael Greger",
     rating: 3.9,
@@ -144,7 +144,7 @@ const books = [
     stock: 28,
   },
   {
-    category: "Business",
+    category: "business",
     title: "The Innovator's Dilemma",
     author: "Clayton M. Christensen",
     rating: 4,
@@ -154,7 +154,7 @@ const books = [
     stock: 20,
   },
   {
-    category: "Fiction",
+    category: "fiction",
     title: "Educated",
     author: "Tara Westover",
     rating: 4.4,
@@ -164,7 +164,7 @@ const books = [
     stock: 15,
   },
   {
-    category: "Travel",
+    category: "travel",
     title: "The Geography of Bliss",
     author: "Eric Weiner",
     rating: 4,
@@ -174,7 +174,7 @@ const books = [
     stock: 15,
   },
   {
-    category: "Food",
+    category: "food",
     title: "Julie & Julia",
     author: "Julie Powell",
     rating: 3.2,
@@ -184,7 +184,7 @@ const books = [
     stock: 22,
   },
   {
-    category: "Health",
+    category: "health",
     title: "The Power of Now",
     author: "Eckhart Tolle",
     rating: 4,
@@ -194,7 +194,7 @@ const books = [
     stock: 35,
   },
   {
-    category: "Business",
+    category: "business",
     title: "Zero to One",
     author: "Peter Thiel",
     rating: 1.5,
@@ -203,7 +203,7 @@ const books = [
     stock: 25,
   },
   {
-    category: "Fiction",
+    category: "fiction",
     title: "The Silent Patient",
     author: "Alex Michaelides",
     rating: 4,
@@ -213,7 +213,7 @@ const books = [
     stock: 35,
   },
   {
-    category: "Travel",
+    category: "travel",
     title: "Wild",
     author: "Cheryl Strayed",
     rating: 4.2,
@@ -223,7 +223,7 @@ const books = [
     stock: 20,
   },
   {
-    category: "Food",
+    category: "food",
     title: "The Omnivore's Dilemma",
     author: "Michael Pollan",
     rating: 4,
@@ -233,7 +233,7 @@ const books = [
     stock: 20,
   },
   {
-    category: "Health",
+    category: "health",
     title: "Mindset",
     author: "Carol S. Dweck",
     rating: 4.3,
@@ -243,7 +243,7 @@ const books = [
     stock: 30,
   },
   {
-    category: "Business",
+    category: "business",
     title: "The Hard Thing About Hard Things",
     author: "Ben Horowitz",
     rating: 1,
@@ -253,7 +253,7 @@ const books = [
     stock: 22,
   },
   {
-    category: "Fiction",
+    category: "fiction",
     title: "Circe",
     author: "Madeline Miller",
     rating: 4.4,
@@ -263,7 +263,7 @@ const books = [
     stock: 22,
   },
   {
-    category: "Travel",
+    category: "travel",
     title: "The Great Railway Bazaar",
     author: "Paul Theroux",
     rating: 3,
@@ -272,7 +272,7 @@ const books = [
     stock: 12,
   },
   {
-    category: "Food",
+    category: "food",
     title: "My Life in France",
     author: "Julia Child",
     rating: 4.1,
@@ -281,7 +281,7 @@ const books = [
     stock: 25,
   },
   {
-    category: "Health",
+    category: "health",
     title: "The 7 Habits of Highly Effective People",
     author: "Stephen R. Covey",
     rating: 4,
@@ -291,7 +291,7 @@ const books = [
     stock: 40,
   },
   {
-    category: "Business",
+    category: "business",
     title: "Built to Last",
     author: "Jim Collins",
     rating: 3.6,
@@ -301,7 +301,7 @@ const books = [
     stock: 30,
   },
   {
-    category: "Fiction",
+    category: "fiction",
     title: "The Invisible Life of Addie LaRue",
     author: "V.E. Schwab",
     rating: 3,
@@ -311,7 +311,7 @@ const books = [
     stock: 18,
   },
   {
-    category: "Travel",
+    category: "travel",
     title: "In a Sunburned Country",
     author: "Bill Bryson",
     rating: 2.8,
@@ -321,7 +321,7 @@ const books = [
     stock: 16,
   },
   {
-    category: "Food",
+    category: "food",
     title: "The Joy of Cooking",
     author: "Irma S. Rombauer",
     rating: 4,
@@ -331,7 +331,7 @@ const books = [
     stock: 18,
   },
   {
-    category: "Health",
+    category: "health",
     title: "Why We Sleep",
     author: "Matthew Walker",
     rating: 4.3,
@@ -340,7 +340,7 @@ const books = [
     stock: 25,
   },
   {
-    category: "Business",
+    category: "business",
     title: "The Tipping Point",
     author: "Malcolm Gladwell",
     rating: 4,
@@ -349,7 +349,7 @@ const books = [
     stock: 35,
   },
   {
-    category: "Fiction",
+    category: "fiction",
     title: "Normal People",
     author: "Sally Rooney",
     rating: 3.2,
@@ -358,7 +358,7 @@ const books = [
     stock: 28,
   },
   {
-    category: "Travel",
+    category: "travel",
     title: "The Beach",
     author: "Alex Garland",
     rating: 3,
@@ -368,7 +368,7 @@ const books = [
     stock: 28,
   },
   {
-    category: "Food",
+    category: "food",
     title: "Heat",
     author: "Bill Buford",
     rating: 3.7,
@@ -378,7 +378,7 @@ const books = [
     stock: 24,
   },
   {
-    category: "Health",
+    category: "health",
     title: "The Body Keeps the Score",
     author: "Bessel van der Kolk",
     rating: 5,
@@ -388,7 +388,7 @@ const books = [
     stock: 22,
   },
   {
-    category: "Business",
+    category: "business",
     title: "Outliers",
     author: "Malcolm Gladwell",
     rating: 4.1,
@@ -398,7 +398,7 @@ const books = [
     stock: 33,
   },
   {
-    category: "Fiction",
+    category: "fiction",
     title: "Little Fires Everywhere",
     author: "Celeste Ng",
     rating: 4,
@@ -408,7 +408,7 @@ const books = [
     stock: 24,
   },
   {
-    category: "Travel",
+    category: "travel",
     title: "On the Road",
     author: "Jack Kerouac",
     rating: 3.5,
@@ -418,7 +418,7 @@ const books = [
     stock: 24,
   },
   {
-    category: "Food",
+    category: "food",
     title: "The Art of Simple Food",
     author: "Alice Waters",
     rating: 4,
@@ -427,7 +427,7 @@ const books = [
     stock: 16,
   },
   {
-    category: "Health",
+    category: "health",
     title: "Breath",
     author: "James Nestor",
     rating: 3.9,
@@ -437,7 +437,7 @@ const books = [
     stock: 33,
   },
   {
-    category: "Business",
+    category: "business",
     title: "The E-Myth Revisited",
     author: "Michael E. Gerber",
     rating: 4,
@@ -446,7 +446,7 @@ const books = [
     stock: 28,
   },
   {
-    category: "Fiction",
+    category: "fiction",
     title: "The Handmaid's Tale",
     author: "Margaret Atwood",
     rating: 4.3,
@@ -455,7 +455,7 @@ const books = [
     stock: 32,
   },
   {
-    category: "Travel",
+    category: "travel",
     title: "The Art of Travel",
     author: "Alain de Botton",
     rating: 4,
@@ -465,7 +465,7 @@ const books = [
     stock: 19,
   },
   {
-    category: "Food",
+    category: "food",
     title: "Fast Food Nation",
     author: "Eric Schlosser",
     rating: 3.3,
@@ -474,7 +474,7 @@ const books = [
     stock: 30,
   },
   {
-    category: "Health",
+    category: "health",
     title: "The Subtle Art of Not Giving a F*ck",
     author: "Mark Manson",
     rating: 3,
@@ -484,7 +484,7 @@ const books = [
     stock: 38,
   },
   {
-    category: "Business",
+    category: "business",
     title: "Start With Why",
     author: "Simon Sinek",
     rating: 4.2,
@@ -494,7 +494,7 @@ const books = [
     stock: 26,
   },
   {
-    category: "Fiction",
+    category: "fiction",
     title: "The Kite Runner",
     author: "Khaled Hosseini",
     rating: 5,
@@ -504,7 +504,7 @@ const books = [
     stock: 15,
   },
   {
-    category: "Travel",
+    category: "travel",
     title: "Turn Right at Machu Picchu",
     author: "Mark Adams",
     rating: 3.7,
@@ -514,7 +514,7 @@ const books = [
     stock: 14,
   },
   {
-    category: "Food",
+    category: "food",
     title: "In Defense of Food",
     author: "Michael Pollan",
     rating: 4,
@@ -524,7 +524,7 @@ const books = [
     stock: 21,
   },
   {
-    category: "Health",
+    category: "health",
     title: "Sapiens",
     author: "Yuval Noah Harari",
     rating: 4.4,
@@ -534,7 +534,7 @@ const books = [
     stock: 27,
   },
   {
-    category: "Business",
+    category: "business",
     title: "Crossing the Chasm",
     author: "Geoffrey A. Moore",
     rating: 4,
@@ -544,7 +544,7 @@ const books = [
     stock: 18,
   },
   {
-    category: "Fiction",
+    category: "fiction",
     title: "Gone Girl",
     author: "Gillian Flynn",
     rating: 4.0,
@@ -554,7 +554,7 @@ const books = [
     stock: 27,
   },
   {
-    category: "Travel",
+    category: "travel",
     title: "The Lost City of Z",
     author: "David Grann",
     rating: 3,
@@ -564,7 +564,7 @@ const books = [
     stock: 17,
   },
   {
-    category: "Food",
+    category: "food",
     title: "The Making of a Chef",
     author: "Michael Ruhlman",
     rating: 3.8,
@@ -574,7 +574,7 @@ const books = [
     stock: 19,
   },
   {
-    category: "Health",
+    category: "health",
     title: "The Happiness Hypothesis",
     author: "Jonathan Haidt",
     rating: 1,
@@ -583,7 +583,7 @@ const books = [
     stock: 24,
   },
   {
-    category: "Business",
+    category: "business",
     title: "The 4-Hour Workweek",
     author: "Timothy Ferriss",
     rating: 2.7,
@@ -592,7 +592,7 @@ const books = [
     stock: 40,
   },
   {
-    category: "Fiction",
+    category: "fiction",
     title: "The Great Gatsby",
     author: "F. Scott Fitzgerald",
     rating: 4,
@@ -601,7 +601,7 @@ const books = [
     stock: 40,
   },
   {
-    category: "Travel",
+    category: "travel",
     title: "Dark Star Safari",
     author: "Paul Theroux",
     rating: 3.3,
@@ -611,7 +611,7 @@ const books = [
     stock: 11,
   },
   {
-    category: "Food",
+    category: "food",
     title: "Cooked",
     author: "Michael Pollan",
     rating: 4,
@@ -620,7 +620,7 @@ const books = [
     stock: 17,
   },
   {
-    category: "Health",
+    category: "health",
     title: "Flow",
     author: "Mihaly Csikszentmihalyi",
     rating: 2.6,
@@ -630,7 +630,7 @@ const books = [
     stock: 29,
   },
   {
-    category: "Business",
+    category: "business",
     title: "Purple Cow",
     author: "Seth Godin",
     rating: 4,
@@ -640,7 +640,7 @@ const books = [
     stock: 42,
   },
   {
-    category: "Fiction",
+    category: "fiction",
     title: "To Kill a Mockingbird",
     author: "Harper Lee",
     rating: 1.1,
@@ -650,7 +650,7 @@ const books = [
     stock: 35,
   },
   {
-    category: "Travel",
+    category: "travel",
     title: "The Snow Leopard",
     author: "Peter Matthiessen",
     rating: 4,
@@ -659,7 +659,7 @@ const books = [
     stock: 13,
   },
   {
-    category: "Food",
+    category: "food",
     title: "The French Laundry Cookbook",
     author: "Thomas Keller",
     rating: 4.3,
@@ -669,7 +669,7 @@ const books = [
     stock: 12,
   },
   {
-    category: "Health",
+    category: "health",
     title: "The Upward Spiral",
     author: "Alex Korb",
     rating: 4,
@@ -679,7 +679,7 @@ const books = [
     stock: 31,
   },
   {
-    category: "Business",
+    category: "business",
     title: "The First 90 Days",
     author: "Michael Watkins",
     rating: 3.7,
@@ -688,7 +688,7 @@ const books = [
     stock: 24,
   },
   {
-    category: "Fiction",
+    category: "fiction",
     title: "1984",
     author: "George Orwell",
     rating: 4,
@@ -698,7 +698,7 @@ const books = [
     stock: 38,
   },
   {
-    category: "Travel",
+    category: "travel",
     title: "Blue Highways",
     author: "William Least Heat-Moon",
     rating: 3.8,
@@ -708,7 +708,7 @@ const books = [
     stock: 21,
   },
   {
-    category: "Food",
+    category: "food",
     title: "Animal, Vegetable, Miracle",
     author: "Barbara Kingsolver",
     rating: 4,
@@ -718,7 +718,7 @@ const books = [
     stock: 26,
   },
   {
-    category: "Health",
+    category: "health",
     title: "Thinking, Fast and Slow",
     author: "Daniel Kahneman",
     rating: 4.0,
@@ -728,7 +728,7 @@ const books = [
     stock: 20,
   },
   {
-    category: "Business",
+    category: "business",
     title: "Delivering Happiness",
     author: "Tony Hsieh",
     rating: 3,
@@ -738,7 +738,7 @@ const books = [
     stock: 29,
   },
   {
-    category: "Fiction",
+    category: "fiction",
     title: "Pride and Prejudice",
     author: "Jane Austen",
     rating: 4.2,
@@ -748,7 +748,7 @@ const books = [
     stock: 42,
   },
   {
-    category: "Travel",
+    category: "travel",
     title: "The Tao of Travel",
     author: "Paul Theroux",
     rating: 4,
@@ -758,7 +758,7 @@ const books = [
     stock: 15,
   },
   {
-    category: "Food",
+    category: "food",
     title: "The Flavor Bible",
     author: "Karen Page",
     rating: 4.4,
@@ -767,7 +767,7 @@ const books = [
     stock: 14,
   },
   {
-    category: "Health",
+    category: "health",
     title: "The Stress-Proof Brain",
     author: "Melanie Greenberg",
     rating: 3,
@@ -777,7 +777,7 @@ const books = [
     stock: 26,
   },
   {
-    category: "Business",
+    category: "business",
     title: "The Art of War",
     author: "Sun Tzu",
     rating: 3.9,
@@ -787,7 +787,7 @@ const books = [
     stock: 45,
   },
   {
-    category: "Fiction",
+    category: "fiction",
     title: "The Catcher in the Rye",
     author: "J.D. Salinger",
     rating: 3,
@@ -797,7 +797,7 @@ const books = [
     stock: 30,
   },
   {
-    category: "Travel",
+    category: "travel",
     title: "Neither Here nor There",
     author: "Bill Bryson",
     rating: 4.0,
@@ -807,7 +807,7 @@ const books = [
     stock: 26,
   },
   {
-    category: "Food",
+    category: "food",
     title: "Mastering the Art of French Cooking",
     author: "Julia Child",
     rating: 5,
@@ -816,7 +816,7 @@ const books = [
     stock: 20,
   },
   {
-    category: "Health",
+    category: "health",
     title: "Grit",
     author: "Angela Duckworth",
     rating: 3.8,
@@ -825,7 +825,7 @@ const books = [
     stock: 34,
   },
   {
-    category: "Business",
+    category: "business",
     title: "Blue Ocean Strategy",
     author: "W. Chan Kim",
     rating: 4,
@@ -834,7 +834,7 @@ const books = [
     stock: 21,
   },
   {
-    category: "Fiction",
+    category: "fiction",
     title: "Lord of the Flies",
     author: "William Golding",
     rating: 3.4,
@@ -843,7 +843,7 @@ const books = [
     stock: 25,
   },
   {
-    category: "Travel",
+    category: "travel",
     title: "The Old Patagonian Express",
     author: "Paul Theroux",
     rating: 4,
@@ -853,7 +853,7 @@ const books = [
     stock: 18,
   },
   {
-    category: "Food",
+    category: "food",
     title: "The Bread Baker's Apprentice",
     author: "Peter Reinhart",
     rating: 4.1,
@@ -863,7 +863,7 @@ const books = [
     stock: 18,
   },
   {
-    category: "Health",
+    category: "health",
     title: "The Molecule of More",
     author: "Daniel Z. Lieberman",
     rating: 3,
@@ -873,7 +873,7 @@ const books = [
     stock: 23,
   },
   {
-    category: "Business",
+    category: "business",
     title: "The Lean Six Sigma Pocket Toolbook",
     author: "Michael L. George",
     rating: 2.8,
@@ -883,7 +883,7 @@ const books = [
     stock: 15,
   },
   {
-    category: "Fiction",
+    category: "fiction",
     title: "The Book Thief",
     author: "Markus Zusak",
     rating: 4,
@@ -893,7 +893,7 @@ const books = [
     stock: 20,
   },
   {
-    category: "Travel",
+    category: "travel",
     title: "Video Night in Kathmandu",
     author: "Pico Iyer",
     rating: 3.4,
@@ -903,7 +903,7 @@ const books = [
     stock: 23,
   },
   {
-    category: "Food",
+    category: "food",
     title: "Flour Water Salt Yeast",
     author: "Ken Forkish",
     rating: 4,
@@ -913,7 +913,7 @@ const books = [
     stock: 13,
   },
   {
-    category: "Health",
+    category: "health",
     title: "Educated",
     author: "Tara Westover",
     rating: 4.5,
@@ -923,7 +923,7 @@ const books = [
     stock: 18,
   },
   {
-    category: "Business",
+    category: "business",
     title: "Never Eat Alone",
     author: "Keith Ferrazzi",
     rating: 3,
@@ -932,7 +932,7 @@ const books = [
     stock: 37,
   },
   {
-    category: "Fiction",
+    category: "fiction",
     title: "Brave New World",
     author: "Aldous Huxley",
     rating: 3.9,
@@ -941,7 +941,7 @@ const books = [
     stock: 33,
   },
   {
-    category: "Travel",
+    category: "travel",
     title: "The Motorcycle Diaries",
     author: "Ernesto Che Guevara",
     rating: 4,
@@ -951,7 +951,7 @@ const books = [
     stock: 29,
   },
   {
-    category: "Food",
+    category: "food",
     title: "The Professional Chef",
     author: "The Culinary Institute of America",
     rating: 4.0,
@@ -960,7 +960,7 @@ const books = [
     stock: 8,
   },
   {
-    category: "Health",
+    category: "health",
     title: "The Gifts of Imperfection",
     author: "Brené Brown",
     rating: 4,
@@ -970,7 +970,7 @@ const books = [
     stock: 36,
   },
   {
-    category: "Business",
+    category: "business",
     title: "The Richest Man in Babylon",
     author: "George S. Clason",
     rating: 4.2,

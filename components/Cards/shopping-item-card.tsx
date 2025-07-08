@@ -6,8 +6,8 @@ import { useAtom } from "jotai";
 import { shoppingCartState } from "@/atoms";
 
 import { BookProps } from "@/const";
-import { currencyFormat } from "@/lib/utils";
-import StarRating from "../Rating/StarRating";
+import { currencyFormat, upperCaseEachWord } from "@/lib/utils";
+import StarRating from "../Rating/star-rating";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -60,7 +60,7 @@ export default function ShoopingItemCard(props: BookProps) {
         />
       </CardHeader>
       <CardContent className="space-y-2 px-4">
-        <div className="text-sm text-muted-foreground">{category}</div>
+        <div className="text-sm text-muted-foreground">{upperCaseEachWord(category)}</div>
         <h3 className="font-semibold text-xl">{title}</h3>
         <p className="text-sm text-muted-foreground">{author}</p>
         <StarRating rating={rating} disabled className="mt-8"/>

@@ -14,3 +14,13 @@ export interface ShoppingCartItemProps extends BookProps {
 }
 
 export const PAGE_SIZE = 6;
+
+export const BOOK_TYPES = [
+    "fiction",
+    "travel",
+    "food",
+    "health",
+    "business",
+]
+
+export const SORT_VALUE = ['rating', 'price'];
