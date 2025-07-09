@@ -42,7 +42,7 @@ export default function Pagination(props: PaginationProps) {
             onClick={() => {
               onClick?.(pageNumber);
             }}
-            className={`${positionStyles} ${isCurrentPage ? "" : "hover:bg-muted"}`}
+            className={`${positionStyles}`}
           >
             {pageNumber}
           </Button>

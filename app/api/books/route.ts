@@ -27,7 +27,7 @@ interface BookQueryOptions {
 function parseBookListQuery(searchParams: URLSearchParams): { filter: BookFilter; options: BookQueryOptions } {
   const filter: BookFilter = {};
   const options: BookQueryOptions = {
-    sort: { createdAt: -1, _id: -1 }, // default sort with _id as tiebreaker
+    sort: { createdAt: -1, _id: -1 },
     limit: DEFAULT_PAGE_SIZE,
     skip: 0
   };

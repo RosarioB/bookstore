@@ -61,8 +61,8 @@ export default function ShoopingItemCard(props: BookProps) {
       </CardHeader>
       <CardContent className="space-y-2 px-4">
         <div className="text-sm text-muted-foreground">{upperCaseEachWord(category)}</div>
-        <h3 className="font-semibold text-xl">{title}</h3>
-        <p className="text-sm text-muted-foreground">{author}</p>
+        <h3 className="font-semibold text-xl text-foreground">{title}</h3>
+        <p className="text-sm font-medium text-muted-foreground">{author}</p>
         <StarRating rating={rating} disabled className="mt-8"/>
       </CardContent>
       <CardFooter className="flex gap-2 justify-end px-4 pb-4">
