@@ -1,5 +1,5 @@
 import { Skeleton } from "../ui/skeleton";
-import SkeletonCard from "./skeleton-card";
+import SkeletonCard from "./skeleton-shopping-item-card";
 
 export default function SkeletonLayout() {
   return (

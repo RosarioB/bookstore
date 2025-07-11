@@ -11,15 +11,13 @@ import {
 import { upperCaseEachWord } from "@/lib/utils";
 
 export default function BookTypeMenu() {
-  const bookTypeList = BOOK_TYPES;
   const [homePageQueryData, setHomePageQueryData] = useAtom(homePageQueryState);
 
-  console.log("homePageQueryData", homePageQueryData);
   return (
     <>
       <DropdownMenuLabel>Book Type</DropdownMenuLabel>
       <DropdownMenuGroup>
-        {bookTypeList.map((bookType) => (
+        {BOOK_TYPES.map((bookType) => (
           <DropdownMenuItem
             key={bookType}
             onClick={() => {

@@ -1,7 +1,6 @@
 "use client";
 
 import CommonLayout from "@/components/Layout";
-import { Suspense } from "react";
 import Pagination from "@/components/Pagination";
 import { useAtom } from "jotai";
 import { homePageBookSumState, homePageQueryState } from "@/atoms";
@@ -16,13 +15,10 @@ export default function Home() {
     setHomePageQueryData({ ...homePageQueryData, page });
   };
 
-  console.log("homePageBookSum", homePageBookSum);
-  console.log("PAGE_SIZE", PAGE_SIZE);
-
   return (
     <>
       <CommonLayout>
-          <BookList page={homePageQueryData?.page || 1} pageSize={PAGE_SIZE} />
+        <BookList page={homePageQueryData?.page || 1} pageSize={PAGE_SIZE} />
         <div className="flex justify-center pt-6">
           <Pagination
             currentPage={homePageQueryData?.page || 1}

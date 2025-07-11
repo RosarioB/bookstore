@@ -1,43 +1,42 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useSnackbar } from "notistack";
 import { ShoppingCartIcon } from "lucide-react";
 import { useAtom } from "jotai";
 import { shoppingCartState } from "@/atoms";
+import { toast } from "sonner";
 
 import { BookProps } from "@/const";
 import { currencyFormat, upperCaseEachWord } from "@/lib/utils";
 import StarRating from "../Rating/star-rating";
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
-export default function ShoopingItemCard(props: BookProps) {
+export default function ShoppingItemCard(props: BookProps) {
   const { _id, category, title, author, rating, price, imageSrc, stock } =
     props;
   const [, setShoppingCart] = useAtom(shoppingCartState);
-
-  const { enqueueSnackbar } = useSnackbar();
 
   const addItem = () => {
     setShoppingCart((oldShoppingCart) => {
       const existingItem = oldShoppingCart.find((i) => i._id === _id);
       if (existingItem) {
         if (existingItem.quantity >= stock) {
-          enqueueSnackbar(`Out of stock!`, { variant: "error" });
+          toast.error(`Out of stock!`);
           return [...oldShoppingCart];
         }
         const newItem = {
           ...existingItem,
           quantity: existingItem.quantity + 1,
         };
-        enqueueSnackbar(`"${title}" was successfully added.`, {
-          variant: "success",
-        });
+        toast.success(`"${title}" was successfully added.`);
         return [...oldShoppingCart.filter((i) => i._id !== _id), newItem];
       }
-      enqueueSnackbar(`"${title}" was successfully added.`, {
-        variant: "success",
-      });
+      toast.success(`"${title}" was successfully added.`);
       return [
         ...oldShoppingCart,
         {
@@ -60,10 +59,12 @@ export default function ShoopingItemCard(props: BookProps) {
         />
       </CardHeader>
       <CardContent className="space-y-2 px-4">
-        <div className="text-sm text-muted-foreground">{upperCaseEachWord(category)}</div>
+        <div className="text-sm text-muted-foreground">
+          {upperCaseEachWord(category)}
+        </div>
         <h3 className="font-semibold text-xl text-foreground">{title}</h3>
         <p className="text-sm font-medium text-muted-foreground">{author}</p>
-        <StarRating rating={rating} disabled className="mt-8"/>
+        <StarRating rating={rating} disabled className="mt-8" />
       </CardContent>
       <CardFooter className="flex gap-2 justify-end px-4 pb-4">
         <Button onClick={addItem} className="h-12 w-26 font-semibold">

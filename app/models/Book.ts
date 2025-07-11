@@ -52,6 +52,6 @@ const bookSchema = new mongoose.Schema<IBook>({
 });
 
 // Check if the model exists before creating it
-const Book = mongoose.models.Book || mongoose.model<IBook>('Book', bookSchema);
+const Book = mongoose.models.Book || mongoose.model<IBook>('Book', bookSchema, 'books');
 
 export default Book; 

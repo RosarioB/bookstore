@@ -1,11 +1,11 @@
 import { useAtom } from "jotai";
 
-import ShoopingItemCard from "./shopping-item-card";
+import ShoppingItemCard from "./shopping-item-card";
 import {
   homePageBookSumState, homePageQueryLoadable
 } from "@/atoms";
 import { BookProps } from "@/const";
-import SkeletonLayout from "../Skeleton/skeleton-layout";
+import SkeletonLayout from "../Skeleton/skeleton-shopping-item-card-list";
 
 export interface BookListProps {
   page: number;
@@ -18,7 +18,8 @@ export default function BookList(props: BookListProps) {
   const [bookListLoadable] = useAtom(homePageQueryLoadable);
   const [homePageBookSum] = useAtom(homePageBookSumState);
 
-  console.log("bookListLoadable", bookListLoadable);
+  console.log(bookListLoadable);
+
   switch (bookListLoadable.state) {
     case "hasData":
       return (
@@ -32,9 +33,9 @@ export default function BookList(props: BookListProps) {
                 : pageSize * page
             } of over ${homePageBookSum} results`}</div>
           )}
-          <div className="grid grid-cols-1 gap-x-2 gap-y-10 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 xl:gap-x-8">
+          <div className="grid grid-cols-1 gap-y-10 justify-items-center md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 xl:gap-x-8">
             {bookListLoadable.data?.content?.map((book: BookProps) => (
-              <ShoopingItemCard key={book._id} {...book} />
+              <ShoppingItemCard key={book._id} {...book} />
             ))}
           </div>
         </>

@@ -6,7 +6,7 @@ type MongooseCache = {
 };
 
 declare global {
-  var mongoose: MongooseCache | undefined; // This must be a `var` and not a `let / const`
+  var mongoose: MongooseCache | undefined;
 }
 
 let cached = global.mongoose;

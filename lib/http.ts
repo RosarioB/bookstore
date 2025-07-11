@@ -29,3 +29,24 @@ export async function fetchBooks(data: {
         return { error, content: [], total: 0 };
     }
 }
+
+export async function buyBook(
+    bookID: string,
+    params: { userId: string; quantity: number }
+  ): Promise<{
+    content?: { message: string };
+    error?: any;
+  }> {
+    try {
+      const response = await api.post(
+        `/api/books/${bookID}/buy?userId=${params.userId}&quantity=${params.quantity}`
+      );
+      if (response.status !== 200) {
+        throw new Error(`${response.status} - ${response.data}`);
+      }
+      return { content: response.data };
+    } catch (error) {
+      console.error(error);
+      return { error };
+    }
+  }

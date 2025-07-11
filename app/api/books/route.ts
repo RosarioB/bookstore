@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import Book from '@/app/models/Book';
 import dbConnect from '@/lib/mongoose';
 import { BOOK_TYPES } from '@/const';
+import { type NextRequest } from 'next/server'
 
 const DEFAULT_PAGE_NUM = 1;
 const DEFAULT_PAGE_SIZE = 6;
@@ -87,11 +88,11 @@ function parseBookListQuery(searchParams: URLSearchParams): { filter: BookFilter
 }
 
 // GET /api/books - Get books with filtering, sorting, and pagination
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
     try {
         await dbConnect();
-        
-        const { searchParams } = new URL(request.url);
+
+        const { searchParams } = request.nextUrl;
         const { filter, options } = parseBookListQuery(searchParams);
         
         // Get books with filtering, sorting, and pagination

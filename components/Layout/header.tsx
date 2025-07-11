@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { AlignJustifyIcon, ShoppingCartIcon, BookOpenIcon } from "lucide-react";
 import { useAtom } from "jotai";
@@ -60,7 +62,7 @@ export default function Header(props: HeaderProps) {
                 <div className="relative">
                   <ShoppingCartIcon className="size-6" />
                   <Badge
-                    variant="destructive"
+                    variant="secondary"
                     className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs"
                   >
                     {calcCartItemSum(shoppingCart)}

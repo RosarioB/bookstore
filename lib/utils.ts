@@ -23,3 +23,17 @@ export function currencyFormat(num: number | string) {
 export function upperCaseEachWord(str: string) {
   return str.replace(/\w\S*/g, (w) => w.replace(/^\w/, (c) => c.toUpperCase()));
 }
+
+export function roundAt2DecimalPlaces(num: number) {
+  return Math.round((num + Number.EPSILON) * 100) / 100;
+}
+
+export function calcCartItemTotalPrice(cartItems: ShoppingCartItemProps[]) {
+  const sum = cartItems.reduce((prev, item) => {
+    const qty = item.quantity;
+    const unitPrice = item.price;
+    const total = qty * unitPrice;
+    return prev + total;
+  }, 0);
+  return roundAt2DecimalPlaces(sum);
+}
