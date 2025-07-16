@@ -1,6 +1,6 @@
 import dbConnect from "@/lib/mongoose";
 import { NextResponse } from "next/server";
-import Book from "@/app/models/Book";
+import Book, { IBook } from "@/app/models/Book";
 
 // GET /api/books/[id] - Get a book by id
 export async function GET(
@@ -31,6 +31,10 @@ export async function GET(
     }
 }
 
+const UPDATABLE_FIELDS: (keyof IBook)[] = [
+    'title', 'author', 'category', 'price', 'stock', 'imageSrc', 'reviews'
+];
+
 // PUT /api/books/[id] - Update a book by id
 export async function PUT(
     request: Request,
@@ -40,10 +44,18 @@ export async function PUT(
         await dbConnect();
         const { id } = await params;
         const body = await request.json();
-        const { title, description, imageUrl } = body;
+        const { name, description, imageUrl, price, stock, category, author, reviews } = body;
+
+        // Define which fields can be updated (more secure and explicit)
+        const updateFields: Partial<IBook> = {};
+        UPDATABLE_FIELDS.forEach(field => {
+            if (body[field] !== undefined) {
+                updateFields[field] = body[field];
+            }
+        });
 
         const book = await Book.findByIdAndUpdate({ _id: id },
-            { title, description, imageUrl },
+            { $set: updateFields },
             { new: true }
         );
 

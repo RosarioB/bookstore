@@ -10,10 +10,12 @@ import {
   DialogTitle,
   DialogFooter,
   DialogTrigger,
+  DialogClose,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
+import { Loader2Icon } from "lucide-react";
 
 export interface BookInfoDialogProps {
   data: BookDetailProps;
@@ -22,8 +24,9 @@ export interface BookInfoDialogProps {
 
 export default function BookInfoDialog({ data }: BookInfoDialogProps) {
   const [isStockValid, setIsStockValid] = useState<boolean>(true);
-  const [isUpdating, setIsUpdating] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const [stock, setStock] = useState<number>(data.stock);
+  const [open, setOpen] = useState<boolean>(false);
 
   useEffect(() => {
     setStock(data.stock);
@@ -47,31 +50,31 @@ export default function BookInfoDialog({ data }: BookInfoDialogProps) {
   const handleUpdate = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    setIsUpdating(true);
+    setLoading(true);
     const res = await updateBookDetails(data._id, {
       stock: stock,
     });
 
     if (res.error) {
       toast.error("Error: Update book details.");
-      setIsUpdating(false);
+      setLoading(false);
+      setOpen(false);
       return;
     }
 
     toast.success("Book details were updated.");
     res.content?.data;
-    setIsUpdating(false);
-  };
-
-  const handleCancel = () => {
-    setStock(data.stock);
-    setIsStockValid(true);
+    setLoading(false);
+    setOpen(false);
+    
   };
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline">Edit Details</Button>
+        <Button variant="secondary" className="w-32 h-12 font-semibold">
+          EDIT DETAILS
+        </Button>
       </DialogTrigger>
       <DialogContent className="max-w-md">
         <DialogHeader>
@@ -143,22 +146,19 @@ export default function BookInfoDialog({ data }: BookInfoDialogProps) {
           </div>
 
           <DialogFooter className="gap-2">
-            <Button type="button" variant="outline" onClick={handleCancel}>
-              Cancel
-            </Button>
+            <DialogClose asChild>
+              <Button type="button" variant="outline">
+                Cancel
+              </Button>
+            </DialogClose>
             <Button
               type="submit"
-              disabled={!isStockValid || isUpdating || stock === data.stock}
+              variant="secondary"
+              disabled={!isStockValid || loading || stock === data.stock}
               className="min-w-20"
             >
-              {isUpdating ? (
-                <div className="flex items-center gap-2">
-                  <div className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
-                  Updating...
-                </div>
-              ) : (
-                "Update"
-              )}
+              {loading && <Loader2Icon className="animate-spin" />}
+              UPDATE
             </Button>
           </DialogFooter>
         </form>

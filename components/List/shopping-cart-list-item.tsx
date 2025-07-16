@@ -89,7 +89,7 @@ export default function ShoppingCartListItem(props: ShoppingCartItemProps) {
   };
 
   return (
-    <Card className="shadow-xl py-0 border-none">
+    <Card className="shadow-xl py-0 border-none text-foreground">
       <CardContent className="md:pl-0 px-0">
         <div className="flex flex-col md:flex-row">
           {/* Image Section */}

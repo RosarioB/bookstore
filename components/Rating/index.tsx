@@ -31,14 +31,14 @@ export default function StarRating({
                   "w-4 h-4 transition-colors",
                   isFilled
                     ? "fill-green-500 text-green-500"
-                    : "fill-green-100 text-green-100"
+                    : "fill-green-100 text-green-100 dark:fill-green-900 dark:text-green-900"
                 )}
               />
             )}
             {isHalf && (
               <>
                 {/* Background star - light green for right half */}
-                <Star className="w-4 h-4 fill-green-100 text-green-100" />
+                <Star className="w-4 h-4 fill-green-100 text-green-100 dark:fill-green-900 dark:text-green-900" />
                 {/* Foreground star - regular green for left half */}
                 <Star
                   className="w-4 h-4 fill-green-500 text-green-500 absolute top-0 left-0"
