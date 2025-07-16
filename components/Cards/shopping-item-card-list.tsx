@@ -18,8 +18,6 @@ export default function BookList(props: BookListProps) {
   const [bookListLoadable] = useAtom(homePageQueryLoadable);
   const [homePageBookSum] = useAtom(homePageBookSumState);
 
-  console.log(bookListLoadable);
-
   switch (bookListLoadable.state) {
     case "hasData":
       return (

@@ -17,7 +17,10 @@ export default function ClientProviders({ children }: ClientProvidersProps) {
     >
       <Provider>
         {children}
-        <Toaster position="bottom-left" richColors />
+        <Toaster 
+          position="bottom-left" 
+          richColors
+        />
       </Provider>
     </ThemeProvider>
   );

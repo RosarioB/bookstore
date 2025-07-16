@@ -1,15 +1,38 @@
 import mongoose from 'mongoose';
-
+export interface IReview {
+    name: string;
+    rating: number;
+    date: string;
+}
 export interface IBook {
     _id: string
     category: string
     title: string
     author: string
-    rating: number
+    avgRating: number
     price: number
     imageSrc: string
     stock: number
+    reviews: IReview[]
 }
+
+const reviewSchema = new mongoose.Schema<IReview>({
+    name: {
+        type: String,
+        required: [true, "Please provide a reviewer name"],
+        maxLength: [100, "Reviewer name cannot be more than 100 characters"],
+    },
+    rating: {
+        type: Number,
+        required: [true, "Please provide a rating for this review"],
+        min: [1, "Rating must be at least 1"],
+        max: [5, "Rating cannot be more than 5"],
+    },
+    date: {
+        type: String,
+        required: [true, "Please provide a review date"],
+    }
+}, { _id: false });
 
 const bookSchema = new mongoose.Schema<IBook>({
     category: {
@@ -27,7 +50,7 @@ const bookSchema = new mongoose.Schema<IBook>({
         required: [true, "Please provide an author for this book"],
         maxLength: [100, "Author cannot be more than 100 characters"],
     },
-    rating: {
+    avgRating: {
         type: Number,
         required: [true, "Please provide a rating for this book"],
         min: [1, "Rating must be at least 1"],
@@ -47,11 +70,14 @@ const bookSchema = new mongoose.Schema<IBook>({
         required: [true, "Please provide a stock for this book"],
         min: [0, "Stock must be at least 0"],
     },
+    reviews: {
+        type: [reviewSchema],
+        default: [],
+    },
 }, {
     timestamps: true,
 });
 
-// Check if the model exists before creating it
 const Book = mongoose.models.Book || mongoose.model<IBook>('Book', bookSchema, 'books');
 
 export default Book; 

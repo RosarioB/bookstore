@@ -7,7 +7,6 @@ import { shoppingCartState } from "@/atoms";
 import { calcCartItemSum, calcCartItemTotalPrice } from "@/lib/utils";
 import ShoppingCartListItem from "@/components/List/shopping-cart-list-item";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Card, CardContent } from "@/components/ui/card";
 
 export default function ShoppingCartList() {
   const [shoppingCart] = useAtom(shoppingCartState);

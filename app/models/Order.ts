@@ -31,7 +31,6 @@ const orderSchema = new mongoose.Schema<IOrder>({
     timestamps: true,
 });
 
-// Check if the model exists before creating it
 const Order = mongoose.models.Order || mongoose.model<IOrder>('Order', orderSchema, 'orders');
 
 export default Order; 

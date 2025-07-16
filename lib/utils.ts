@@ -14,6 +14,10 @@ export function calcCartItemSum(cartItems: ShoppingCartItemProps[]) {
   return Math.round(sum);
 }
 
+export function roundHalf(num: number) {
+  return Math.round(num * 2) / 2;
+}
+
 export function currencyFormat(num: number | string) {
   return parseFloat(`${num}`)
     .toFixed(2)
@@ -36,4 +40,8 @@ export function calcCartItemTotalPrice(cartItems: ShoppingCartItemProps[]) {
     return prev + total;
   }, 0);
   return roundAt2DecimalPlaces(sum);
+}
+
+export function checkIsValidInteger(str: string) {
+  return /^[0-9]+$/.test(str);
 }

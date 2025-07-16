@@ -1,7 +1,7 @@
 import { atom } from "jotai";
 
 import { ShoppingCartItemProps, PAGE_SIZE } from "@/const";
-import { fetchBooks } from "@/lib/http";
+import { fetchBookDetailsById, fetchBooks } from "@/lib/http";
 import { loadable } from "jotai/utils";
 
 export const shoppingCartState = atom<ShoppingCartItemProps[]>([]);
@@ -26,3 +26,14 @@ export const homePageBookSumState = atom((get) => {
   const res = get(homePageQueryLoadable);
   return res.state === "hasData" ? res.data.total : 0;
 });
+
+export const bookInfoQuery = atom(async (get) => {
+  const bookID = get(bookDetailsIdState);
+  const response = await fetchBookDetailsById(bookID);
+  if (response.error) {
+    throw response.error;
+  }
+  return response;
+});
+
+export const bookInfoQueryLoadable = loadable(bookInfoQuery);

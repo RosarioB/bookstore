@@ -7,7 +7,7 @@ import { toast } from "sonner";
 
 import { BookProps } from "@/const";
 import { currencyFormat, upperCaseEachWord } from "@/lib/utils";
-import StarRating from "../Rating/star-rating";
+import StarRating from "../Rating";
 import {
   Card,
   CardContent,
@@ -17,7 +17,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 export default function ShoppingItemCard(props: BookProps) {
-  const { _id, category, title, author, rating, price, imageSrc, stock } =
+  const { _id, category, title, author, avgRating, price, imageSrc, stock } =
     props;
   const [, setShoppingCart] = useAtom(shoppingCartState);
 
@@ -64,7 +64,7 @@ export default function ShoppingItemCard(props: BookProps) {
         </div>
         <h3 className="font-semibold text-xl text-foreground">{title}</h3>
         <p className="text-sm font-medium text-muted-foreground">{author}</p>
-        <StarRating rating={rating} disabled className="mt-8" />
+        <StarRating rating={avgRating} disabled className="mt-8" />
       </CardContent>
       <CardFooter className="flex gap-2 justify-end px-4 pb-4">
         <Button onClick={addItem} className="h-12 w-26 font-semibold">
