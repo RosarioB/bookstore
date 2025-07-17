@@ -25,7 +25,7 @@ export default function BookPage() {
   const renderContent = () => {
     switch (bookDetailsLodable.state) {
       case "hasData":
-        const book = bookDetailsLodable.data.content.data as Book;
+        const book = bookDetailsLodable?.data?.content?.data as Book;
         return (
           <>
             <BookInfoSection book={book} />
@@ -41,8 +41,6 @@ export default function BookPage() {
         );
       case "hasError":
         throw bookDetailsLodable.error;
-      default:
-        return null;
     }
   };
 

@@ -27,7 +27,7 @@ export const homePageBookSumState = atom((get) => {
   return res.state === "hasData" ? res.data.total : 0;
 });
 
-export const bookInfoQuery = atom(async (get) => {
+export const bookInfoQuery = atomWithRefresh(async (get) => {
   const bookID = get(bookDetailsIdState);
   const response = await fetchBookDetailsById(bookID);
   if (response.error) {

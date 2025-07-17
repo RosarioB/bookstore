@@ -16,6 +16,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
 import { Loader2Icon } from "lucide-react";
+import { useAtom } from "jotai";
+import { bookInfoQuery } from "@/atoms";
 
 export interface BookInfoDialogProps {
   book: BookDetail;
@@ -26,6 +28,8 @@ export default function BookInfoDialog({ book }: BookInfoDialogProps) {
   const [loading, setLoading] = useState<boolean>(false);
   const [stock, setStock] = useState<number>(book.stock);
   const [open, setOpen] = useState<boolean>(false);
+
+  const [, refreshBookInfo] = useAtom(bookInfoQuery);
 
   useEffect(() => {
     setStock(book.stock);
@@ -60,7 +64,7 @@ export default function BookInfoDialog({ book }: BookInfoDialogProps) {
       setOpen(false);
       return;
     }
-
+    refreshBookInfo();
     toast.success("Book details were updated.");
     res.content?.data;
     setLoading(false);
