@@ -29,9 +29,9 @@ export default function ShoppingCartList() {
 
 const EmptyCartAlert = () => {
   return (
-    <Alert variant="default">
-      <Info className="h-4 w-4" />
-      <AlertDescription>Your shopping cart is empty.</AlertDescription>
+    <Alert variant="default" className="mt-4 flex items-center gap-2">
+      <Info/>
+      <AlertDescription className="text-lg">Your shopping cart is empty.</AlertDescription>
     </Alert>
   );
 };
