@@ -1,13 +1,13 @@
 import { ReactNode } from "react";
 import { Provider } from "jotai";
 import { ThemeProvider } from "@/components/Theme/theme-provider";
-import { Toaster } from "@/components/ui/sonner"
+import { Toaster } from "@/components/ui/sonner";
 
-interface ClientProvidersProps {
+interface ProvidersProps {
   children: ReactNode;
 }
 
-export default function ClientProviders({ children }: ClientProvidersProps) {
+export default function Providers({ children }: ProvidersProps) {
   return (
     <ThemeProvider
       attribute="class"
@@ -17,11 +17,8 @@ export default function ClientProviders({ children }: ClientProvidersProps) {
     >
       <Provider>
         {children}
-        <Toaster 
-          position="bottom-left" 
-          richColors
-        />
+        <Toaster position="bottom-left" richColors />
       </Provider>
     </ThemeProvider>
   );
-} 
+}

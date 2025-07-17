@@ -28,7 +28,7 @@ export default function Pagination(props: PaginationProps) {
   console.log("Pagination pages", pages);
 
   return (
-    <div className="flex items-center gap-0 flex-wrap">
+    <nav className="flex items-center gap-0 flex-wrap" aria-label="Pagination navigation">
       {new Array(pages).fill(0).map((_, idx) => {
         const pageNumber = idx + 1;
         const isCurrentPage = pageNumber === currentPage;
@@ -48,6 +48,6 @@ export default function Pagination(props: PaginationProps) {
           </Button>
         );
       })}
-    </div>
+    </nav>
   );
 }

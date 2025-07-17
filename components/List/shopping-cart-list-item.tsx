@@ -1,34 +1,29 @@
 "use client";
 
-import { useState } from 'react';
-import Image from 'next/image';
-import { PlusIcon, MinusIcon, TrashIcon, Loader2Icon  } from 'lucide-react';
+import { useState } from "react";
+import Image from "next/image";
+import { PlusIcon, MinusIcon, TrashIcon, Loader2Icon } from "lucide-react";
+import { shoppingCartState, currentUserIdState } from "@/atoms";
 
-import { shoppingCartState, currentUserIdState } from '@/atoms';
-
-import { ShoppingCartItemProps } from '@/const';
-import { currencyFormat, calcCartItemTotalPrice, upperCaseEachWord } from '@/lib/utils';
-import { buyBook } from '@/lib/http';
-import { useAtom } from 'jotai';
+import { ShoppingCartItemProps } from "@/const";
+import {
+  currencyFormat,
+  calcCartItemTotalPrice,
+  upperCaseEachWord,
+} from "@/lib/utils";
+import { buyBook } from "@/lib/http";
+import { useAtom } from "jotai";
 import { toast } from "sonner";
 
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 export default function ShoppingCartListItem(props: ShoppingCartItemProps) {
-  const {
-    _id,
-    title,
-    author,
-    category,
-    price,
-    quantity,
-    stock,
-    imageSrc,
-  } = props;
-  const [loading, setLoading] = useState(false);
+  const { _id, title, author, category, price, quantity, stock, imageSrc } =
+    props;
 
+  const [loading, setLoading] = useState(false);
   const [, setShoppingCart] = useAtom(shoppingCartState);
   const [currentUserId] = useAtom(currentUserIdState);
 
@@ -89,109 +84,111 @@ export default function ShoppingCartListItem(props: ShoppingCartItemProps) {
   };
 
   return (
-    <Card className="shadow-xl py-0 border-none text-foreground">
-      <CardContent className="md:pl-0 px-0">
-        <div className="flex flex-col md:flex-row">
-          {/* Image Section */}
-          <figure className="md:shrink-0">
-            <Image
-              src={imageSrc}
-              alt={title}
-              width={150}
-              height={225}
-              className="h-48 w-full rounded-t-lg md:rounded-l-lg md:rounded-r-none object-cover md:h-full md:w-full"
-            />
-          </figure>
+    <section aria-label="Cart item">
+      <Card className="shadow-xl py-0 border-none text-foreground">
+        <CardContent className="md:pl-0 px-0">
+          <div className="flex flex-col md:flex-row">
+            {/* Image Section */}
+            <figure className="md:shrink-0">
+              <Image
+                src={imageSrc}
+                alt={title}
+                width={150}
+                height={225}
+                className="h-48 w-full rounded-t-lg md:rounded-l-lg md:rounded-r-none object-cover md:h-full md:w-full"
+              />
+            </figure>
 
-          {/* Content Section */}
-          <div className="flex-1 space-y-1 p-8">
-            {/* Book Information */}
-            <div className="space-y-1">
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-                <span className="text-lg font-bold">Title:</span>
-                <span>{title}</span>
+            {/* Content Section */}
+            <div className="flex-1 space-y-1 p-8">
+              {/* Book Information */}
+              <div className="space-y-1">
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+                  <span className="text-lg font-bold">Title:</span>
+                  <span>{title}</span>
+                </div>
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+                  <span className="text-lg font-bold">Author:</span>
+                  <span>{author}</span>
+                </div>
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+                  <span className="text-lg font-bold">Type:</span>
+                  <span>{upperCaseEachWord(category)}</span>
+                </div>
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+                  <span className="text-lg font-bold">Price:</span>
+                  <span>${currencyFormat(price)}</span>
+                </div>
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+                  <span className="text-lg font-bold">In stock:</span>
+                  <span>{stock}</span>
+                </div>
               </div>
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-                <span className="text-lg font-bold">Author:</span>
-                <span>{author}</span>
-              </div>
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-                <span className="text-lg font-bold">Type:</span>
-                <span>{upperCaseEachWord(category)}</span>
-              </div>
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-                <span className="text-lg font-bold">Price:</span>
-                <span>${currencyFormat(price)}</span>
-              </div>
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-                <span className="text-lg font-bold">In stock:</span>
-                <span>{stock}</span>
-              </div>
-            </div>
 
-            {/* Quantity and Price Section */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
-              {/* Quantity Controls */}
-              <div className="flex items-center">
+              {/* Quantity and Price Section */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
+                {/* Quantity Controls */}
+                <div className="flex items-center">
+                  <Button
+                    size="sm"
+                    disabled={quantity >= stock}
+                    onClick={handleAddQty}
+                    className="rounded-r-none border-none"
+                  >
+                    <PlusIcon className="h-4 w-4" />
+                  </Button>
+                  <Input
+                    value={quantity}
+                    disabled
+                    className="w-16 h-8 text-center font-bold border-none bg-gray-200 rounded-none text-balck"
+                  />
+                  <Button
+                    size="sm"
+                    disabled={quantity <= 1}
+                    onClick={handleRemoveQty}
+                    className="rounded-l-none border-l"
+                  >
+                    <MinusIcon className="h-4 w-4" />
+                  </Button>
+                </div>
+
+                {/* Total Price */}
+                <div className="font-bold text-lg">
+                  <span className="mr-1">
+                    {quantity === 1
+                      ? `(${quantity} item) $`
+                      : `(${quantity} items) $`}
+                  </span>
+                  {calcCartItemTotalPrice([props])}
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-2 sm:justify-end">
                 <Button
+                  variant="destructive"
                   size="sm"
-                  disabled={quantity >= stock}
-                  onClick={handleAddQty}
-                  className="rounded-r-none border-none"
+                  onClick={deleteItem}
+                  className="flex items-center gap-2"
                 >
-                  <PlusIcon className="h-4 w-4" />
+                  <TrashIcon className="h-4 w-4" />
+                  DELETE
                 </Button>
-                <Input
-                  value={quantity}
-                  disabled
-                  className="w-16 h-8 text-center font-bold border-none bg-gray-200 rounded-none text-balck"
-                />
                 <Button
+                  variant="secondary"
                   size="sm"
-                  disabled={quantity <= 1}
-                  onClick={handleRemoveQty}
-                  className="rounded-l-none border-l"
+                  onClick={handleBuyClick}
+                  disabled={loading}
+                  className="flex items-center gap-2"
                 >
-                  <MinusIcon className="h-4 w-4" />
+                  {loading && <Loader2Icon className="animate-spin" />}
+                  PROCEED TO PURCHASE
                 </Button>
               </div>
-
-              {/* Total Price */}
-              <div className="font-bold text-lg">
-                <span className="mr-1">
-                  {quantity === 1
-                    ? `(${quantity} item) $`
-                    : `(${quantity} items) $`}
-                </span>
-                {calcCartItemTotalPrice([props])}
-              </div>
-            </div>
-
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-2 sm:justify-end">
-              <Button 
-                variant="destructive" 
-                size="sm" 
-                onClick={deleteItem}
-                className="flex items-center gap-2"
-              >
-                <TrashIcon className="h-4 w-4" />
-                DELETE
-              </Button>
-              <Button
-                variant="secondary"
-                size="sm"
-                onClick={handleBuyClick}
-                disabled={loading}
-                className="flex items-center gap-2"
-              >
-                {loading && <Loader2Icon className="animate-spin" />}
-                PROCEED TO PURCHASE
-              </Button>
             </div>
           </div>
-        </div>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+    </section>
   );
 }

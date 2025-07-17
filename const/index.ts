@@ -1,4 +1,4 @@
-export interface BookProps {
+export interface Book {
     _id: string
     category: string
     title: string
@@ -7,21 +7,21 @@ export interface BookProps {
     price: number
     imageSrc: string
     stock: number
-    reviews: ReviewProps[]
+    reviews: Review[]
 }
 
-export interface ReviewProps {
+export interface Review {
     name: string
     rating: number
     date: string
 }
 
-export type BookDetailProps = Omit<
-  BookProps,
+export type BookDetail = Omit<
+  Book,
   "reviews" | "avgRating"
 >;
 
-export interface ShoppingCartItemProps extends BookProps {
+export interface ShoppingCartItemProps extends Book {
     quantity: number;
 }
 

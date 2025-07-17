@@ -12,7 +12,7 @@ export default function ShoppingCartList() {
   const [shoppingCart] = useAtom(shoppingCartState);
 
   return (
-    <div className="flex flex-col gap-4 py-4">
+    <section className="flex flex-col gap-4 py-4" aria-label="Shopping cart list">
       {shoppingCart.map((cartItem) => (
         <ShoppingCartListItem key={cartItem._id} {...cartItem} />
       ))}
@@ -23,7 +23,7 @@ export default function ShoppingCartList() {
         />
       )}
       {!shoppingCart.length && <EmptyCartAlert />}
-    </div>
+    </section>
   );
 }
 
@@ -40,7 +40,7 @@ const SubTotal = (props: { sum: number; price: number }) => {
   const { sum, price } = props;
 
   return (
-    <div className="flex justify-end">
+    <section className="flex justify-end" aria-label="Subtotal">
       <div className="text-right">
         <p className="text-lg font-bold">
           <span className="mr-1">
@@ -51,6 +51,6 @@ const SubTotal = (props: { sum: number; price: number }) => {
           {price}
         </p>
       </div>
-    </div>
+    </section>
   );
 };

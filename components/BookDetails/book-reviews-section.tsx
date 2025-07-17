@@ -1,4 +1,4 @@
-import { starLabels, ReviewProps, BookProps } from "@/const";
+import { starLabels, Book, Review } from "@/const";
 import { roundHalf } from "@/lib/utils";
 import StarRating from "@/components/Rating";
 import {
@@ -12,28 +12,29 @@ import {
 import { Progress } from "../ui/progress";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
-export default function BookReviewsSection(props: BookProps) {
-  const data = props;
+interface BookReviewsSectionProps {
+  book: Book;
+}
+
+export default function BookReviewsSection({ book }: BookReviewsSectionProps) {
   return (
-    <>
-      <div className="mt-6 p-4">
-        <h2 className="text-3xl font-bold mb-6">Customer Reviews</h2>
-        <div className="flex md:flex-row flex-col gap-10">
-          <div className="flex-1">
-            <ReviewOverview content={data.reviews} />
-          </div>
-          <div className="overflow-x-auto flex-1">
-            {data?.reviews?.length > 0 && (
-              <ReviewsTable content={data.reviews} bookId={data._id} />
-            )}
-          </div>
-        </div>
+    <section className="mt-6 p-4" aria-label="Book reviews">
+      <h2 className="text-3xl font-bold mb-6">Customer Reviews</h2>
+      <div className="flex md:flex-row flex-col gap-10">
+        <section className="flex-1" aria-label="Review overview">
+          <ReviewOverview content={book.reviews} />
+        </section>
+        <section className="overflow-x-auto flex-1" aria-label="Reviews table">
+          {book?.reviews?.length > 0 && (
+            <ReviewsTable content={book.reviews} bookId={book._id} />
+          )}
+        </section>
       </div>
-    </>
+    </section>
   );
 }
 
-const ReviewOverview = (props: { content: ReviewProps[] }) => {
+const ReviewOverview = (props: { content: Review[] }) => {
   const num = props.content.length;
   const sum = props.content.reduce((prev, item) => {
     return prev + item.rating;
@@ -100,7 +101,7 @@ const StarPercentageBar = (props: { leftText?: string; value: number }) => {
   );
 };
 
-const ReviewsTable = (props: { content: ReviewProps[]; bookId: string }) => {
+const ReviewsTable = (props: { content: Review[]; bookId: string }) => {
   const { content, bookId } = props;
 
   return (
@@ -121,7 +122,7 @@ const ReviewsTable = (props: { content: ReviewProps[]; bookId: string }) => {
                 <TableCell>
                   <div className="flex items-center space-x-3">
                     <Avatar>
-                      <AvatarImage src="/avatar.png"/>
+                      <AvatarImage src="/avatar.png" />
                       <AvatarFallback>
                         {item.name.substring(0, 1).toUpperCase()}
                       </AvatarFallback>

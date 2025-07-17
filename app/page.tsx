@@ -7,7 +7,7 @@ import { homePageBookSumState, homePageQueryState } from "@/atoms";
 import { PAGE_SIZE } from "@/const";
 import BookList from "@/components/Cards/shopping-item-card-list";
 
-export default function Home() {
+export default function HomePage() {
   const [homePageQueryData, setHomePageQueryData] = useAtom(homePageQueryState);
   const [homePageBookSum] = useAtom(homePageBookSumState);
 

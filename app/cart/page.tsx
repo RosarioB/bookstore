@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'View and manage items in your shopping cart',
 };
 
-export default function Cart() {
+export default function CartPage() {
   return (
     <CommonLayout
       headerProps={{

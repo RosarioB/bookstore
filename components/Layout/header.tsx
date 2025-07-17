@@ -24,7 +24,7 @@ export default function Header(props: HeaderProps) {
 
   return (
     <header className="mx-auto max-w-7xl mt-4">
-      <nav className="bg-card rounded-xl shadow-xl px-4 py-3">
+      <nav className="bg-card rounded-xl shadow-xl px-4 py-3" aria-label="Header navigation">
         <div className="flex items-center justify-between">
           {/* Left side - Menu */}
           <div className="flex items-center">

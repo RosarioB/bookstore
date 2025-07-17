@@ -1,6 +1,6 @@
 import { toast } from "sonner";
 
-import { BookDetailProps } from "@/const";
+import { Book, BookDetail } from "@/const";
 import { currencyFormat, checkIsValidInteger } from "@/lib/utils";
 import { updateBookDetails } from "@/lib/http";
 import {
@@ -18,19 +18,18 @@ import { useEffect, useState } from "react";
 import { Loader2Icon } from "lucide-react";
 
 export interface BookInfoDialogProps {
-  data: BookDetailProps;
-  onSuccess?: (data: BookDetailProps) => void;
+  book: BookDetail;
 }
 
-export default function BookInfoDialog({ data }: BookInfoDialogProps) {
+export default function BookInfoDialog({ book }: BookInfoDialogProps) {
   const [isStockValid, setIsStockValid] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(false);
-  const [stock, setStock] = useState<number>(data.stock);
+  const [stock, setStock] = useState<number>(book.stock);
   const [open, setOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    setStock(data.stock);
-  }, [data.stock]);
+    setStock(book.stock);
+  }, [book.stock]);
 
   const handleUpdateStock = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -51,7 +50,7 @@ export default function BookInfoDialog({ data }: BookInfoDialogProps) {
     event.preventDefault();
 
     setLoading(true);
-    const res = await updateBookDetails(data._id, {
+    const res = await updateBookDetails(book._id, {
       stock: stock,
     });
 
@@ -88,7 +87,7 @@ export default function BookInfoDialog({ data }: BookInfoDialogProps) {
             </label>
             <Input
               type="text"
-              value={data.category}
+              value={book.category}
               disabled
               className="bg-muted"
             />
@@ -100,7 +99,7 @@ export default function BookInfoDialog({ data }: BookInfoDialogProps) {
             </label>
             <Input
               type="text"
-              value={data.title}
+              value={book.title}
               disabled
               className="bg-muted"
             />
@@ -112,7 +111,7 @@ export default function BookInfoDialog({ data }: BookInfoDialogProps) {
             </label>
             <Input
               type="text"
-              value={data.author}
+              value={book.author}
               disabled
               className="bg-muted"
             />
@@ -124,7 +123,7 @@ export default function BookInfoDialog({ data }: BookInfoDialogProps) {
             </label>
             <Input
               type="text"
-              value={`$ ${currencyFormat(data.price)}`}
+              value={`$ ${currencyFormat(book.price)}`}
               disabled
               className="bg-muted"
             />
@@ -136,7 +135,7 @@ export default function BookInfoDialog({ data }: BookInfoDialogProps) {
             </label>
             <Input
               type="text"
-              defaultValue={data.stock}
+              defaultValue={book.stock}
               onChange={handleUpdateStock}
               className={!isStockValid ? "border-destructive" : ""}
             />
@@ -154,7 +153,7 @@ export default function BookInfoDialog({ data }: BookInfoDialogProps) {
             <Button
               type="submit"
               variant="secondary"
-              disabled={!isStockValid || loading || stock === data.stock}
+              disabled={!isStockValid || loading || stock === book.stock}
               className="min-w-20"
             >
               {loading && <Loader2Icon className="animate-spin" />}
