@@ -2,7 +2,7 @@
 
 import BookReviewsSection from "@/components/BookDetails/book-reviews-section";
 import CommonLayout from "@/components/Layout";
-import type { NextPage, Metadata } from "next";
+import type { NextPage } from "next";
 import { bookDetailsIdState, bookInfoQueryLoadable } from "@/atoms";
 import { useParams } from "next/navigation";
 
@@ -10,6 +10,8 @@ import BookInfoSection from "@/components/BookDetails/book-info-section";
 import { useAtom } from "jotai";
 import { useEffect } from "react";
 import { BookProps } from "@/const";
+import SkeletonBookInfoSection from "@/components/Skeleton/skeleton-book-info-section";
+import SkeletonBookReviewSection from "@/components/Skeleton/skeleton-book-review-section";
 
 const Book: NextPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -34,12 +36,8 @@ const Book: NextPage = () => {
       case "loading":
         return (
           <>
-            <div className="flex items-center justify-center">
-              <span className="loading loading-bars loading-lg"></span>
-            </div>
-            <div className='flex items-center justify-center mt-6'>
-              <span className='loading loading-bars loading-lg'></span>
-            </div>
+            <SkeletonBookInfoSection />
+            <SkeletonBookReviewSection />
           </>
         );
       case "hasError":
