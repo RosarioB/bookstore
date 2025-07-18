@@ -25,8 +25,6 @@ const getPositionStyles = (index: number, totalPages: number) => {
 export default function Pagination(props: PaginationProps) {
   const { currentPage, pages, onClick } = props;
 
-  console.log("Pagination pages", pages);
-
   return (
     <nav className="flex items-center gap-0 flex-wrap" aria-label="Pagination navigation">
       {new Array(pages).fill(0).map((_, idx) => {

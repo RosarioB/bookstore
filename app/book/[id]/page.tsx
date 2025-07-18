@@ -19,13 +19,15 @@ export default function BookPage() {
   const [bookDetailsLodable] = useAtom(bookInfoQueryLoadable);
 
   useEffect(() => {
-    id && setBookDetailsId(id);
+    if (id) {
+      setBookDetailsId(id);
+    }
   }, [id, setBookDetailsId]);
 
   const renderContent = () => {
     switch (bookDetailsLodable.state) {
       case "hasData":
-        const book = bookDetailsLodable?.data?.content?.data as Book;
+        const book = bookDetailsLodable.data.content as Book;
         return (
           <>
             <BookInfoSection book={book} />

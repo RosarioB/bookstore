@@ -1,6 +1,6 @@
 import { toast } from "sonner";
 
-import { Book, BookDetail } from "@/const";
+import { BookDetail } from "@/const";
 import { currencyFormat, checkIsValidInteger } from "@/lib/utils";
 import { updateBookDetails } from "@/lib/http";
 import {
@@ -47,6 +47,7 @@ export default function BookInfoDialog({ book }: BookInfoDialogProps) {
       }
     } catch (error) {
       setIsStockValid(false);
+      console.error(error);
     }
   };
 
@@ -66,7 +67,6 @@ export default function BookInfoDialog({ book }: BookInfoDialogProps) {
     }
     refreshBookInfo();
     toast.success("Book details were updated.");
-    res.content?.data;
     setLoading(false);
     setOpen(false);
     

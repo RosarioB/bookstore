@@ -4,7 +4,7 @@ import Order from "@/app/models/Order";
 
 
 // GET /api/books/orders - Get all orders
-export async function GET(request: Request) {
+export async function GET() {
     try {
         await dbConnect();
         const orders = await Order.find();

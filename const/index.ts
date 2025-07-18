@@ -21,9 +21,10 @@ export type BookDetail = Omit<
   "reviews" | "avgRating"
 >;
 
-export interface ShoppingCartItemProps extends Book {
+export interface ShoppingCartItem extends Book {
     quantity: number;
 }
+
 
 export const starLabels: { [index: string]: string } = {
     0.5: 'Useless',

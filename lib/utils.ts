@@ -1,4 +1,4 @@
-import { ShoppingCartItemProps } from "@/const";
+import { ShoppingCartItem } from "@/const";
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 
@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function calcCartItemSum(cartItems: ShoppingCartItemProps[]) {
+export function calcCartItemSum(cartItems: ShoppingCartItem[]) {
   const sum = cartItems.reduce((prev, item) => {
     const qty = item.quantity;
     return prev + qty;
@@ -32,7 +32,7 @@ export function roundAt2DecimalPlaces(num: number) {
   return Math.round((num + Number.EPSILON) * 100) / 100;
 }
 
-export function calcCartItemTotalPrice(cartItems: ShoppingCartItemProps[]) {
+export function calcCartItemTotalPrice(cartItems: ShoppingCartItem[]) {
   const sum = cartItems.reduce((prev, item) => {
     const qty = item.quantity;
     const unitPrice = item.price;

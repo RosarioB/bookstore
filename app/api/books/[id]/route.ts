@@ -18,11 +18,11 @@ export async function GET(
                 { status: 404 }
             );
         }
-
         return NextResponse.json({
             success: true,
             data: book
         });
+        
     } catch (error) {
         return NextResponse.json(
             { success: false, error: error instanceof Error ? error.message : "Failed to fetch book" },
@@ -44,9 +44,7 @@ export async function PUT(
         await dbConnect();
         const { id } = await params;
         const body = await request.json();
-        const { name, description, imageUrl, price, stock, category, author, reviews } = body;
 
-        // Define which fields can be updated (more secure and explicit)
         const updateFields: Partial<IBook> = {};
         UPDATABLE_FIELDS.forEach(field => {
             if (body[field] !== undefined) {

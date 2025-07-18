@@ -102,7 +102,7 @@ const StarPercentageBar = (props: { leftText?: string; value: number }) => {
 };
 
 const ReviewsTable = (props: { content: Review[]; bookId: string }) => {
-  const { content, bookId } = props;
+  const { content } = props;
 
   return (
     <>

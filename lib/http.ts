@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { BookDetailProps, BookProps } from '@/const';
+import { Book } from '@/const';
 
 const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'
@@ -10,7 +10,7 @@ export async function fetchBooks(data: {
   size?: number;
   category?: string;
   sort?: string;
-}): Promise<{ content: BookProps[]; total: number; error?: unknown }> {
+}): Promise<{ content: Book[]; total: number; error?: unknown }> {
   try {
     const queryArray = Object.keys(data).reduce((prev: string[], item) => {
       const value = data[item as keyof typeof data];
@@ -35,7 +35,7 @@ export async function buyBook(
   params: { userId: string; quantity: number }
 ): Promise<{
   content?: { message: string };
-  error?: any;
+  error?: unknown;
 }> {
   try {
     const response = await api.post(
@@ -52,27 +52,27 @@ export async function buyBook(
 }
 
 export async function fetchBookDetailsById(id: string): Promise<{
-  content: BookDetailProps;
-  error?: any;
+  content: Book;
+  error?: unknown;
 }> {
   try {
     const response = await api.get(`/api/books/${id}`);
     if (response.status !== 200) {
       throw new Error(`${response.status} - ${response.data}`);
     }
-    return { content: response.data as BookDetailProps };
+    return { content: response.data.data as Book };
   } catch (error) {
     console.error(error);
-    return { error, content: {} as BookDetailProps };
+    return { error, content: {} as Book };
   }
 }
 
 export async function updateBookDetails(
   id: string,
-  params: Partial<BookDetailProps>
+  params: Partial<Book>
 ): Promise<{
-  content?: { data: BookDetailProps; message: string };
-  error?: any;
+  content?: { data: Book; message: string };
+  error?: unknown;
 }> {
   try {
     const response = await api.put(`/api/books/${id}`, params);

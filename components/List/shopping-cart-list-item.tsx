@@ -3,9 +3,9 @@
 import { useState } from "react";
 import Image from "next/image";
 import { PlusIcon, MinusIcon, TrashIcon, Loader2Icon } from "lucide-react";
-import { shoppingCartState, currentUserIdState } from "@/atoms";
+import { shoppingCartState, currentUserIdState, homePageQuery } from "@/atoms";
 
-import { ShoppingCartItemProps } from "@/const";
+import { ShoppingCartItem } from "@/const";
 import {
   currencyFormat,
   calcCartItemTotalPrice,
@@ -19,17 +19,25 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
+export interface ShoppingCartItemProps {
+  item: ShoppingCartItem;
+}
+
 export default function ShoppingCartListItem(props: ShoppingCartItemProps) {
-  const { _id, title, author, category, price, quantity, stock, imageSrc } =
-    props;
+  const {
+    item: { _id, title, author, category, price, quantity, stock, imageSrc },
+  } = props;
 
   const [loading, setLoading] = useState(false);
   const [, setShoppingCart] = useAtom(shoppingCartState);
   const [currentUserId] = useAtom(currentUserIdState);
+  const [, refreshHomePageQuery] = useAtom(homePageQuery);
+
+  console.log("The price is", price);
 
   function handleAddQty() {
     setShoppingCart((oldShoppingCart) => {
-      return oldShoppingCart.reduce<ShoppingCartItemProps[]>((prev, item) => {
+      return oldShoppingCart.reduce<ShoppingCartItem[]>((prev, item) => {
         if (item._id === _id) {
           prev.push({
             ...item,
@@ -45,7 +53,7 @@ export default function ShoppingCartListItem(props: ShoppingCartItemProps) {
 
   function handleRemoveQty() {
     setShoppingCart((oldShoppingCart) => {
-      return oldShoppingCart.reduce<ShoppingCartItemProps[]>((prev, item) => {
+      return oldShoppingCart.reduce<ShoppingCartItem[]>((prev, item) => {
         if (item._id === _id) {
           prev.push({
             ...item,
@@ -76,6 +84,7 @@ export default function ShoppingCartListItem(props: ShoppingCartItemProps) {
       setLoading(false);
       return;
     }
+    refreshHomePageQuery();
     toast.success(`${response.content?.message}`);
     setLoading(false);
     setShoppingCart((oldShoppingCart) => {
@@ -159,7 +168,7 @@ export default function ShoppingCartListItem(props: ShoppingCartItemProps) {
                       ? `(${quantity} item) $`
                       : `(${quantity} items) $`}
                   </span>
-                  {calcCartItemTotalPrice([props])}
+                  {calcCartItemTotalPrice([props.item])}
                 </div>
               </div>
 

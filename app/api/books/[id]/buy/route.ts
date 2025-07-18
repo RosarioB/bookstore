@@ -103,11 +103,11 @@ async function buyBook(id: string, params: URLSearchParams) {
             message: `Successfully bought ${quantity} book(s) <${bookId}>, cost: $${result.cost}, remaining stock: ${result.remainingStock}`,
             data: result
         };
-    } catch (err: any) {
+    } catch (err) {
         console.error('Buy book error:', err);
         return {
             status: 500,
-            message: `Failed to buy book ${bookId}: ${err.message}`,
+            message: `Failed to buy book ${bookId}: ${err instanceof Error ? err.message : 'Unknown error'}`,
             data: null
         };
     }

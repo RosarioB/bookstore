@@ -14,7 +14,7 @@ export default function ShoppingCartList() {
   return (
     <section className="flex flex-col gap-4 py-4" aria-label="Shopping cart list">
       {shoppingCart.map((cartItem) => (
-        <ShoppingCartListItem key={cartItem._id} {...cartItem} />
+        <ShoppingCartListItem key={cartItem._id} item={cartItem} />
       ))}
       {!!shoppingCart.length && (
         <SubTotal
