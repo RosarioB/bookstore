@@ -33,8 +33,6 @@ export default function ShoppingCartListItem(props: ShoppingCartItemProps) {
   const [currentUserId] = useAtom(currentUserIdState);
   const [, refreshHomePageQuery] = useAtom(homePageQuery);
 
-  console.log("The price is", price);
-
   function handleAddQty() {
     setShoppingCart((oldShoppingCart) => {
       return oldShoppingCart.reduce<ShoppingCartItem[]>((prev, item) => {
