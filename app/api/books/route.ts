@@ -17,7 +17,7 @@ interface BookQueryOptions {
   sort: {
     createdAt?: 1 | -1;
     price?: 1 | -1;
-    rating?: 1 | -1;
+    avgRating?: 1 | -1;
     _id?: 1 | -1;
   };
   limit: number;
@@ -44,7 +44,7 @@ function parseBookListQuery(searchParams: URLSearchParams): { filter: BookFilter
 
   // Sorting
   const sort = searchParams.get('sort');
-  const order = searchParams.get('order') || 'asc';
+  const order = searchParams.get('order') || 'desc';
   
   if (sort && SORT_TYPES.includes(sort)) {
     if (!SORT_ORDERS.includes(order)) {
@@ -56,7 +56,7 @@ function parseBookListQuery(searchParams: URLSearchParams): { filter: BookFilter
     if (sort === 'price') {
       options.sort = { price: sortOrder, _id: -1 };
     } else if (sort === 'rating') {
-      options.sort = { rating: sortOrder, _id: -1 };
+      options.sort = { avgRating: sortOrder, _id: -1 };
     }
   }
 
@@ -139,13 +139,13 @@ export async function POST(request: Request) {
     try {
         await dbConnect();
         const body = await request.json();
-        const { category, title, author, rating, price, imageSrc } = body;
+        const { category, title, author, avgRating, price, imageSrc } = body;
 
         const book = await Book.create({
             category,
             title,
             author,
-            rating,
+            avgRating,
             price,
             imageSrc,
         });
