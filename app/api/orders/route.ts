@@ -3,7 +3,7 @@ import dbConnect from "@/lib/mongoose";
 import Order from "@/app/models/Order";
 
 
-// GET /api/books/orders - Get all orders
+// GET /api/orders - Get all orders
 export async function GET() {
     try {
         await dbConnect();

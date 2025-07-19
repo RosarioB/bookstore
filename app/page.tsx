@@ -17,7 +17,7 @@ export default function HomePage() {
 
   return (
     <>
-      <CommonLayout>
+      <CommonLayout hideMenu={false}>
         <BookList page={homePageQueryData?.page || 1} pageSize={PAGE_SIZE} />
         <div className="flex justify-center pt-6">
           <Pagination

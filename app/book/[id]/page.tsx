@@ -48,9 +48,7 @@ export default function BookPage() {
 
   return (
     <CommonLayout
-      headerProps={{
-        hideMenu: true,
-      }}
+      hideMenu={true}
     >
       {renderContent()}
     </CommonLayout>

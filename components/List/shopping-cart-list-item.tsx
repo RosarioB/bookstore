@@ -147,7 +147,7 @@ export default function ShoppingCartListItem(props: ShoppingCartListItemProps) {
                   <Input
                     value={quantity}
                     disabled
-                    className="w-16 h-8 text-center font-bold border-none bg-gray-200 rounded-none text-balck"
+                    className="w-16 h-8 text-center font-bold border-none bg-gray-200 rounded-none text-black"
                   />
                   <Button
                     size="sm"

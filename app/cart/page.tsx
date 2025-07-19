@@ -11,9 +11,7 @@ export const metadata: Metadata = {
 export default function CartPage() {
   return (
     <CommonLayout
-      headerProps={{
-        hideMenu: true,
-      }}
+      hideMenu={true}
     >
       <h1 className='font-bold text-5xl'>Shopping Cart</h1>
       <ShoppingCartList />

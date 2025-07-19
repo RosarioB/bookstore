@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import dbConnect from "@/lib/mongoose";
 import Order from "@/app/models/Order";
 
-// GET /api/books/orders/[id] - Get an order by id
+// GET /api/orders/[id] - Get an order by id
 export async function GET(request: Request, { params }: { params: Promise<{ id: string }> }) {
     try {
         await dbConnect();
