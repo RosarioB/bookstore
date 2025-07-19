@@ -19,11 +19,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-export interface ShoppingCartItemProps {
+export interface ShoppingCartListItemProps {
   item: ShoppingCartItem;
 }
 
-export default function ShoppingCartListItem(props: ShoppingCartItemProps) {
+export default function ShoppingCartListItem(props: ShoppingCartListItemProps) {
   const {
     item: { _id, title, author, category, price, quantity, stock, imageSrc },
   } = props;
@@ -119,7 +119,7 @@ export default function ShoppingCartListItem(props: ShoppingCartItemProps) {
                   <span>{author}</span>
                 </div>
                 <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-                  <span className="text-lg font-bold">Type:</span>
+                  <span className="text-lg font-bold">Category:</span>
                   <span>{upperCaseEachWord(category)}</span>
                 </div>
                 <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
