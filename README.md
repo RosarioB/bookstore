@@ -21,6 +21,10 @@ A modern bookstore application built with Next.js 15, featuring a complete book 
 - 🔍 Category-based browsing
 - 💰 Real-time inventory management
 
+## Acknowledgments
+
+This project has been modified from the original project: [tidb-prisma-vercel-demo](https://github.com/pingcap/tidb-prisma-vercel-demo) by PingCAP. The original demo showcased a virtual online bookstore using TiDB Cloud, Prisma, and Vercel. This version has been adapted to use MongoDB with Mongoose, Jotai for state management, and shadcn/ui components while maintaining the core bookstore functionality.
+
 ## API Routes
 
 The project uses Next.js API routes to create a RESTful API:
